@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>reddit.cl</title>
   </head>
   <body>
-  $END$
+  BĘDZIE JECHANE Z TYM PROJEKTEM
   </body>
 </html>
