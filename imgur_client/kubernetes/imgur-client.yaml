@@ -1,0 +1,44 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    app: imgur
+  name: imgur-client-depl
+spec:
+  schedule: "@hourly"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+             app: imgur-client
+        spec:
+          containers:
+          - image: celery_client:latest
+            imagePullPolicy: Never
+            name: imgur-client
+            volumeMounts:
+              - mountPath: "/app"
+                name: source-code
+              - mountPath: "/pv"
+                name: imgur-data-storage
+            env:
+              - name: IMGUR_ID
+                valueFrom:
+                  secretKeyRef:
+                    name: imgur-secret
+                    key: IMGUR_ID
+              - name: IMGUR_SECRET
+                valueFrom:
+                  secretKeyRef:
+                    name: imgur-secret
+                    key: IMGUR_SECRET
+          restartPolicy: Never
+          volumes:
+            - name: source-code
+              hostPath:
+                path: /desktop/projekt/imgur_client
+                type: Directory
+            - name: imgur-data-storage
+              persistentVolumeClaim:
+                claimName: imgur-data-claim

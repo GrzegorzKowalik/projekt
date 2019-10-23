@@ -13,8 +13,7 @@ def download_imgur_image(image, destination=None):
         img = Image.open(io.BytesIO(data))
         if destination:
             img.save(destination)
-        else:
-            return img
+        return img
     else:
         raise RuntimeError("Response from Requests has code {}".format(response.status_code))
 
@@ -37,5 +36,7 @@ class ImgurClient:
                 for image in item.images:
                     if image['type'] in ['image/jpeg', 'image/png']:
                         image['name'] = image['link'].split('/')[-1]
+                        if "?" in image['name']:
+                            image['name'] = image['name'].split('?')[0]
                         images.append(image)
         return images

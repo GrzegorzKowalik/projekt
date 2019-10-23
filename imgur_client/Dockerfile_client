@@ -1,0 +1,11 @@
+FROM python:buster
+
+COPY requirements.txt /requirements.txt
+
+RUN pip install -r /requirements.txt
+
+COPY *.py /app/
+
+COPY entrypoint_client.sh /entrypoint.sh
+
+ENTRYPOINT ["python", "/app/celery_client.py"]

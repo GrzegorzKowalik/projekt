@@ -15,8 +15,8 @@ def _read_cache(base_dir):
 
 def main():
     args = argparse.ArgumentParser()
-    args.add_argument("-t", "--tag", help="Tag or comma separated list of tags to fetch")
-    args.add_argument("-d", "--base_dir", help="Base directory for image storage")
+    args.add_argument("-t", "--tag", help="Tag or comma separated list of tags to fetch", required=True)
+    args.add_argument("-d", "--base_dir", help="Base directory for image storage", required=True)
     args.add_argument("-v", "--verbose", action="store_true")
     args = args.parse_args()
 

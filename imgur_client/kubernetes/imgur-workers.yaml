@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: imgur
+  name: imgur-workers-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: imgur-workers
+  template:
+    metadata:
+      labels:
+         app: imgur-workers
+    spec:
+      containers:
+      - image: celery_worker:latest
+        imagePullPolicy: Never
+        name: imgur-workers
+        volumeMounts:
+          - mountPath: "/pv"
+            name: imgur-data-storage
+          - mountPath: "/app"
+            name: source-code
+      restartPolicy: Always
+      volumes:
+        - name: imgur-data-storage
+          persistentVolumeClaim:
+            claimName: imgur-data-claim
+        - name: source-code
+          hostPath:
+            path: /desktop/projekt/imgur_client
+            type: Directory
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: imgur-data-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/imgur_data"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: imgur-data-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi

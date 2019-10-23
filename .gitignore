@@ -1,7 +1,9 @@
 .idea/
 venv/
 **/__pycache__/**
-/reddit.cl/lib/
 
+/imgur_client/kubernetes/imgur-secrets.yaml
+
+/reddit.cl/lib/
 /reddit.cl/out/
 /reddit.cl/target/
