@@ -1,4 +1,4 @@
-package cl.reddit.model.commons;
+package cl.reddit.model.user;
 
 import javax.persistence.*;
 
@@ -10,4 +10,12 @@ public class Role {
     @GeneratedValue
     @Column(name = "id", length = 20)
     private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

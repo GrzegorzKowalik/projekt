@@ -1,12 +1,12 @@
 package cl.reddit.model.user;
 
-import cl.reddit.model.commons.UserStatus;
-import cl.reddit.model.commons.UserRole;
+import cl.reddit.model.file.File;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -19,34 +19,43 @@ public class User {
     private Long id;
 
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "id_status", referencedColumnName = "id")
     private UserStatus userStatus;
 
-    @OneToMany
-    @JoinColumn(name = "id_user", referencedColumnName = "id_role")
-    private List<UserRole> userRoles;
+    @NotNull
+    @OneToMany(mappedBy = "userRoleId.user")
+    private Set<UserRole> userRoles;
 
+    @NotNull
     @Column(name = "nick", length = 30)
     private String nick;
 
+    @NotNull
     @Column(name = "password", length = 255)
     private String password;
 
     @Column(name = "reputation")
     private int reputation;
 
+    @NotNull
     @Column(name = "email", length = 255)
     private String email;
 
-    @Column(name = "ts_created")
+    @NotNull
     @CreationTimestamp
+    @Column(name = "ts_created")
     private Timestamp tsCreated;
 
     @Column(name = "ts_last_logged")
     private Timestamp tsLastLogged;
 
+    @NotNull
     @Column(name = "ts_status_changed")
     private Timestamp tsStatusChanged;
+
+    @OneToMany(mappedBy = "user")
+    private Set<File> files;
 
     public Long getId() {
         return id;
@@ -64,11 +73,11 @@ public class User {
         this.userStatus = userStatus;
     }
 
-    public List<UserRole> getUserRoles() {
+    public Set<UserRole> getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(List<UserRole> userRoles) {
+    public void setUserRoles(Set<UserRole> userRoles) {
         this.userRoles = userRoles;
     }
 
@@ -126,5 +135,13 @@ public class User {
 
     public void setTsStatusChanged(Timestamp tsStatusChanged) {
         this.tsStatusChanged = tsStatusChanged;
+    }
+
+    public Set<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(Set<File> files) {
+        this.files = files;
     }
 }
