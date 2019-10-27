@@ -1,7 +1,7 @@
-package cl.reddit.user.model;
+package cl.reddit.model.user;
 
-import cl.reddit.commons.model.UserStatus;
-import cl.reddit.commons.model.UserRole;
+import cl.reddit.model.commons.UserStatus;
+import cl.reddit.model.commons.UserRole;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;

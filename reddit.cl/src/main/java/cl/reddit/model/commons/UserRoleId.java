@@ -1,8 +1,7 @@
-package cl.reddit.commons.model;
+package cl.reddit.model.commons;
 
-import cl.reddit.user.model.User;
+import cl.reddit.model.user.User;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;

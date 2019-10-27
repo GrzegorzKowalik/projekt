@@ -1,4 +1,4 @@
-package cl.reddit.commons.model;
+package cl.reddit.model.commons;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
