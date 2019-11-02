@@ -11,6 +11,6 @@
     <title>reddit.cl</title>
   </head>
   <body>
-  BĘDZIE JECHANE Z TYM PROJEKTEM
+  Witaj użyszkodniku!
   </body>
 </html>
