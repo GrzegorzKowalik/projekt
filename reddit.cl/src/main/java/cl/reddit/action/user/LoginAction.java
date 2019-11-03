@@ -7,10 +7,10 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
 
-@Namespace("/user")
+@Namespace("")
 @Results({
         @Result(name = "success", location = "login.jsp"),
-        @Result(name = "logged", location = "index.jsp")
+        @Result(name = "logged", location = "/user/index.jsp")
 })
 @Action("login")
 public class LoginAction extends ActionSupport {

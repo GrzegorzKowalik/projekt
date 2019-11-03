@@ -1,8 +1,11 @@
 package cl.reddit.model.category;
 
 import cl.reddit.model.post.Post;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
@@ -19,6 +22,11 @@ public class Category {
 
     @Column(name = "description", length = 500)
     private String description;
+
+    @NotNull
+    @CreationTimestamp
+    @Column(name = "ts_created")
+    private Timestamp tsCreated;
 
     @OneToMany(mappedBy = "category")
     private Set<Post> posts;
@@ -45,6 +53,14 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Timestamp getTsCreated() {
+        return tsCreated;
+    }
+
+    public void setTsCreated(Timestamp tsCreated) {
+        this.tsCreated = tsCreated;
     }
 
     public Set<Post> getPosts() {

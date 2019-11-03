@@ -1,5 +1,8 @@
 package cl.reddit.model.vote;
 
+import cl.reddit.model.comment.Comment;
+import cl.reddit.model.post.Post;
+import cl.reddit.model.user.User;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -18,16 +21,16 @@ public class Vote {
     @ManyToOne
     @NotNull
     @JoinColumn(name = "id_user", referencedColumnName = "id")
-    private Long idUser;
+    private User user;
 
     @ManyToOne
     @NotNull
     @JoinColumn(name = "id_post", referencedColumnName = "id")
-    private Long idPost;
+    private Post post;
 
     @ManyToOne
     @JoinColumn(name = "id_comment", referencedColumnName = "id")
-    private Long idComment;
+    private Comment comment;
 
     @ManyToOne
     @NotNull
@@ -47,28 +50,28 @@ public class Vote {
         this.id = id;
     }
 
-    public Long getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getIdPost() {
-        return idPost;
+    public Post getPost() {
+        return post;
     }
 
-    public void setIdPost(Long idPost) {
-        this.idPost = idPost;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
-    public Long getIdComment() {
-        return idComment;
+    public Comment getComment() {
+        return comment;
     }
 
-    public void setIdComment(Long idComment) {
-        this.idComment = idComment;
+    public void setComment(Comment comment) {
+        this.comment = comment;
     }
 
     public VoteType getVoteType() {

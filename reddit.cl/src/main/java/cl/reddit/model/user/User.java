@@ -5,16 +5,17 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Set;
 
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "user_")
+public class User implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -24,7 +25,7 @@ public class User {
     private UserStatus userStatus;
 
     @NotNull
-    @OneToMany(mappedBy = "userRoleId.user")
+    @OneToMany(mappedBy = "user")
     private Set<UserRole> userRoles;
 
     @NotNull
@@ -143,5 +144,22 @@ public class User {
 
     public void setFiles(Set<File> files) {
         this.files = files;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userStatus=" + userStatus +
+                ", userRoles=" + userRoles +
+                ", nick='" + nick + '\'' +
+                ", password='" + password + '\'' +
+                ", reputation=" + reputation +
+                ", email='" + email + '\'' +
+                ", tsCreated=" + tsCreated +
+                ", tsLastLogged=" + tsLastLogged +
+                ", tsStatusChanged=" + tsStatusChanged +
+                ", files=" + files +
+                '}';
     }
 }
