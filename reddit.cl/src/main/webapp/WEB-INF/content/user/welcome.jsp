@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: uranm
@@ -11,6 +12,6 @@
     <title>reddit.cl</title>
   </head>
   <body>
-  Witaj użyszkodniku!
+  <h1>Witaj <s:property value="userDTO.nick"/>!</h1>
   </body>
 </html>

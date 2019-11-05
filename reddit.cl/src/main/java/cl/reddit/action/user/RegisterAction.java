@@ -11,7 +11,7 @@ import org.apache.struts2.convention.annotation.Results;
 @Namespace("")
 @Results({
         @Result(name = "success", location = "register.jsp"),
-        @Result(name = "registered", location = "index.jsp")
+        @Result(name = "registered", location = "user/welcome.jsp")
 })
 @Action("register")
 public class RegisterAction extends ActionSupport {
@@ -22,7 +22,20 @@ public class RegisterAction extends ActionSupport {
 
     @Action("sign-in")
     public String signIn(){
-        if(registrationService.registerUserFromUserDTO(getUserDTO()))
+        boolean errors = false;
+        if(registrationService.nickAlreadyExists(getUserDTO().getNick().trim())) {
+            super.addFieldError("userDTO.nick", "Duplicate nick!");
+            errors = true;
+        }
+        if(registrationService.emailAlreadyExists(getUserDTO().getEmail().trim())) {
+            super.addFieldError("userDTO.email", "Duplicate email!");
+            errors = true;
+        }
+        if(getUserDTO().getPassword().trim().length() < 4) {
+            super.addFieldError("userDTO.password", "Password must be at least 4 characters long!");
+            errors = true;
+        }
+        if(!errors && registrationService.registerUserFromUserDTO(getUserDTO()))
             return "registered";
         return "success";
     }

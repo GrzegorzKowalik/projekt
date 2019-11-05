@@ -18,13 +18,21 @@ public class RegistrationService {
     public boolean registerUserFromUserDTO(UserDTO userDTO) {
         User user = new User();
         user.setUserStatus(new UserStatus(EUserStatus.ACTIVE.name()));
-        user.setEmail(userDTO.getEmail());
-        user.setNick(userDTO.getNick());
+        user.setEmail(userDTO.getEmail().trim());
+        user.setNick(userDTO.getNick().trim());
         user.setPassword(DigestUtils.sha256Hex(userDTO.getPassword()));
         Timestamp stamp = new Timestamp(System.currentTimeMillis());
         user.setTsCreated(stamp);
         user.setTsStatusChanged(stamp);
         user = userRepository.create(user);
         return user.getId() != null && user.getId() > 0;
+    }
+
+    public boolean nickAlreadyExists(String nick) {
+        return userRepository.emailOrNickExists(nick, null);
+    }
+
+    public boolean emailAlreadyExists(String email) {
+        return userRepository.emailOrNickExists(null, email);
     }
 }
