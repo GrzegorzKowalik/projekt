@@ -8,7 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
-<head></head>
+<head>
+
+</head>
 <body>
 <h1>Please log-in</h1>
 <s:form action="/user/log-in.action">
