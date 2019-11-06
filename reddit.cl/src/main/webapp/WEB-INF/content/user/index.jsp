@@ -7,12 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-  <head>
-    <title>reddit.cl</title>
-  </head>
-  <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  </nav>
-  BĘDZIE
-  </body>
+<head>
+  <title>reddit.cl</title>
+</head>
+<body>
+Witaj użyszkodniku!
+</body>
 </html>
