@@ -11,6 +11,8 @@
     <title>reddit.cl</title>
   </head>
   <body>
-  BĘDZIE JECHANE Z TYM PROJEKTEM
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  </nav>
+  BĘDZIE
   </body>
 </html>
