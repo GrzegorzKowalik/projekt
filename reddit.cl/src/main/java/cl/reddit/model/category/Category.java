@@ -1,5 +1,6 @@
 package cl.reddit.model.category;
 
+import cl.reddit.model.AbstractEntity;
 import cl.reddit.model.post.Post;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -10,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "category")
-public class Category {
+public class Category extends AbstractEntity {
 
     @Id
     @GeneratedValue
@@ -31,6 +32,7 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private Set<Post> posts;
 
+    @Override
     public Long getId() {
         return id;
     }

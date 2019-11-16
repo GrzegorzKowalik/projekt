@@ -1,18 +1,20 @@
 package cl.reddit.model.comment;
 
+import cl.reddit.model.AbstractEntity;
 import cl.reddit.model.post.Post;
 import cl.reddit.model.user.User;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
 @Table(name = "comment")
-public class Comment {
+public class Comment extends AbstractEntity {
 
     @Id
     @GeneratedValue
@@ -45,6 +47,7 @@ public class Comment {
     @Column(name = "ts_created")
     private Timestamp tsCreated;
 
+    @Override
     public Long getId() {
         return id;
     }

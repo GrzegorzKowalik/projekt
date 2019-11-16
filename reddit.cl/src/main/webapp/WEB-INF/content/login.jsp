@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1>Please log-in</h1>
-<s:form action="/user/log-in.action">
+<s:form action="log-in.action">
     <s:textfield name="email" label="Email" placeholder="email"/>
     <s:password name="password" label="Password" placeholder="password"/>
     <s:submit value="Log-in"/>

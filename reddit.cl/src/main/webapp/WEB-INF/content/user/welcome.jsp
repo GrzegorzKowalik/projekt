@@ -12,6 +12,6 @@
     <title>reddit.cl</title>
   </head>
   <body>
-  Witaj użyszkodniku!
+  <h1>Witaj <s:property value="userDTO.nick"/>!</h1>
   </body>
 </html>

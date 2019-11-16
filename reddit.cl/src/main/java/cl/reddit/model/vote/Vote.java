@@ -1,5 +1,6 @@
 package cl.reddit.model.vote;
 
+import cl.reddit.model.AbstractEntity;
 import cl.reddit.model.comment.Comment;
 import cl.reddit.model.post.Post;
 import cl.reddit.model.user.User;
@@ -7,11 +8,12 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "vote")
-public class Vote {
+public class Vote extends AbstractEntity implements Serializable {
 
     @Id
     @GeneratedValue
@@ -42,6 +44,7 @@ public class Vote {
     @Column(name = "ts_created")
     private Timestamp tsCreated;
 
+    @Override
     public Long getId() {
         return id;
     }

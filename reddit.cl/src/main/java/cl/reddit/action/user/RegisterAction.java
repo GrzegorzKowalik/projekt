@@ -3,17 +3,18 @@ package cl.reddit.action.user;
 import cl.reddit.model.user.dto.UserDTO;
 import cl.reddit.service.commons.RegistrationService;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
+import org.apache.struts2.components.FieldError;
+import org.apache.struts2.convention.annotation.*;
+
+import java.util.List;
 
 @Namespace("")
+@ParentPackage("json-default")
 @Results({
-        @Result(name = "success", location = "register.jsp"),
+        @Result(name = "success", location = "index.jsp"),
+        @Result(name = "json", type = "json", params = {"root"}),
         @Result(name = "registered", location = "user/welcome.jsp")
 })
-@Action("register")
 public class RegisterAction extends ActionSupport {
 
     private UserDTO userDTO;
@@ -37,7 +38,7 @@ public class RegisterAction extends ActionSupport {
         }
         if(!errors && registrationService.registerUserFromUserDTO(getUserDTO()))
             return "registered";
-        return "success";
+        return "json";
     }
 
     public UserDTO getUserDTO() {

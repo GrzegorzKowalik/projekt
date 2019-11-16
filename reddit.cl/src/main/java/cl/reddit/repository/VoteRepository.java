@@ -1,32 +1,30 @@
 package cl.reddit.repository;
 
 import cl.reddit.model.vote.Vote;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-public class VoteRepository implements IRepository<Vote> {
-    @Override
+public class VoteRepository extends AbstractRepository<Vote> {
+
+    private Logger log = LoggerFactory.getLogger(VoteRepository.class);
+
     public Vote findById(Long id) {
-        return null;
+        return super.findById(id, Vote.class);
     }
 
-    @Override
     public List<Vote> findAll() {
-        return null;
+        return super.findAll(Vote.class);
+    }
+
+    public boolean delete(Long id) {
+        return super.delete(id, Vote.class);
     }
 
     @Override
     public Vote create(Vote vote) {
-        return null;
-    }
-
-    @Override
-    public boolean delete(Vote vote) {
-        return false;
-    }
-
-    @Override
-    public boolean update(Vote vote) {
-        return false;
+        vote.setId((Long)super.create(vote));
+        return vote;
     }
 }

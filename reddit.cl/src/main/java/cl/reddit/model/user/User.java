@@ -1,5 +1,6 @@
 package cl.reddit.model.user;
 
+import cl.reddit.model.AbstractEntity;
 import cl.reddit.model.file.File;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -12,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user_")
-public class User implements Serializable {
+public class User extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,6 +59,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private Set<File> files;
 
+    @Override
     public Long getId() {
         return id;
     }

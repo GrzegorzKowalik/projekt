@@ -1,5 +1,6 @@
 package cl.reddit.model.file;
 
+import cl.reddit.model.AbstractEntity;
 import cl.reddit.model.comment.Comment;
 import cl.reddit.model.post.Post;
 import cl.reddit.model.user.User;
@@ -7,11 +8,12 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "file")
-public class File {
+public class File extends AbstractEntity {
 
     @Id
     @GeneratedValue
@@ -65,6 +67,7 @@ public class File {
         this.comment = comment;
     }
 
+    @Override
     public Long getId() {
         return id;
     }

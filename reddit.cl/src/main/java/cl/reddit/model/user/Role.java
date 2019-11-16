@@ -1,16 +1,20 @@
 package cl.reddit.model.user;
 
+import cl.reddit.model.AbstractEntity;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "role")
-public class Role {
+public class Role extends AbstractEntity {
 
     @Id
     @GeneratedValue
     @Column(name = "id", length = 20)
     private String id;
 
+    @Override
     public String getId() {
         return id;
     }

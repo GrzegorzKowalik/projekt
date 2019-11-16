@@ -1,11 +1,14 @@
 package cl.reddit.model.user;
 
+import cl.reddit.model.AbstractEntity;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user_role")
-public class UserRole {
+public class UserRole extends AbstractEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +28,7 @@ public class UserRole {
         this.id = id;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
