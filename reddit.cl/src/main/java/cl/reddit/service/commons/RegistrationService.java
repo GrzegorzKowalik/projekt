@@ -6,6 +6,7 @@ import cl.reddit.model.user.dto.UserDTO;
 import cl.reddit.model.user.enumeration.EUserStatus;
 import cl.reddit.repository.UserRepository;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -20,7 +21,7 @@ public class RegistrationService {
         user.setUserStatus(new UserStatus(EUserStatus.ACTIVE.name()));
         user.setEmail(userDTO.getEmail().trim());
         user.setNick(userDTO.getNick().trim());
-        user.setPassword(DigestUtils.sha256Hex(userDTO.getPassword()));
+        user.setPassword(userDTO.getPassword());
         Timestamp stamp = new Timestamp(System.currentTimeMillis());
         user.setTsCreated(stamp);
         user.setTsStatusChanged(stamp);
