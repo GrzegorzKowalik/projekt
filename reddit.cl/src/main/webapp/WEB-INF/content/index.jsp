@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+  <title>REDDIT.CL</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     * {box-sizing: border-box;}
@@ -201,94 +202,42 @@
         width: 100%;
       }
     }
+
+    /* Main column */
+    .main {
+      -ms-flex: 60%; /* IE10 */
+      width: 60%;
+      background-color: floralwhite;
+      padding: 20px;
+      margin-left: auto;
+      margin-right: auto;
+
+    }
+
+    /* Fake image, just for this example */
+    .fakeimg {
+      background-color: #aaa;
+      width: 100%;
+      padding: 20px;
+    }
   </style>
 </head>
 <body>
-
-<div class="topnav">
-  <a> reddit.cl </a>
-  <a class="active" href="#home">Home</a>
-  <a href="#memes">Memes</a>
-  <a href="#category2">category2</a>
-  <a href="#category3">category3</a>
-  <a href="#category4">category4</a>
-  <input type="text" placeholder="Search" name="search">
-
-  <div class="right-navbar">
-    <button onclick="document.getElementById('login').style.display='block'" style="width:auto;">Login</button>
-    <button onclick="document.getElementById('register').style.display='block'" style="width:auto">Register</button>
-  </div>
-  <%--<div class="login-container">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Username" name="username">
-      <input type="text" placeholder="Password" name="psw">
-      <button type="submit">Login</button>
-    </form>
-  </div>--%>
-</div>
+<jsp:include page="header.jsp" />
 
 <div style="padding-left:16px">
-  <h2>Welcome redditer</h2>
-  <p></p>
+  <div class="main">
+    <h2>TITLE HEADING</h2>
+    <h5>Title description, Dec 7, 2017</h5>
+    <div class="fakeimg" style="height:200px;">Image</div>
+    <p>Some text..</p>
+    <br>
+
+  </div>
+
 </div>
 
-<div id="register" class="modal">
-  <span onclick="document.getElementById('register').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="<s:url action="sign-in"/>" method="post">
-    <div class="container">
-      <h1>Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
-      <hr>
-      <label><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="userDTO.email" required>
-
-      <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Nickname" name="userDTO.nick" required>
-
-      <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="userDTO.password" required>
-
-      <label><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
-
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-      <div class="clearfix">
-        <button type="button" onclick="document.getElementById('register').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn">Sign Up</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-<div id="login" class="modal">
-  <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/action_page.php">
-    <div class="container">
-      <h1>Log in</h1>
-      <hr>
-      <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-
-      <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
-
-      <div class="clearfix">
-        <%--<button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>--%>
-        <button type="submit" class="loginbtn">Log in</button>
-      </div>
-    </div>
-  </form>
-</div>
-<script>
+<%--<script>
   // Get the modal
   var modal = document.getElementById('register');
   // When the user clicks anywhere outside of the modal, close it
@@ -305,7 +254,10 @@
       modal.style.display = "none";
     }
   }
-</script>
+</script>--%>
+<footer style="position: relative; bottom:0;">
+  <h6>Made with &#10084;</h6>
+</footer>
 </body>
 </html>
 
