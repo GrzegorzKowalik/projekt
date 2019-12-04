@@ -4,6 +4,7 @@ import cl.reddit.model.AbstractEntity;
 import cl.reddit.model.category.Category;
 import cl.reddit.model.file.File;
 import cl.reddit.model.user.User;
+import cl.reddit.model.vote.Vote;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -36,12 +37,6 @@ public class Post extends AbstractEntity {
     @Column(name = "body", length = 20000)
     private String body;
 
-    @Column(name = "upvotes")
-    private Integer upvotes;
-
-    @Column(name = "downvotes")
-    private Integer downvotes;
-
     @NotNull
     @CreationTimestamp
     @Column(name = "ts_created")
@@ -53,6 +48,9 @@ public class Post extends AbstractEntity {
 
     @OneToMany(mappedBy = "post")
     private Set<File> files;
+
+    @OneToMany(mappedBy = "post")
+    private Set<Vote> votes;
 
     @Override
     public Long getId() {
@@ -95,22 +93,6 @@ public class Post extends AbstractEntity {
         this.body = body;
     }
 
-    public Integer getUpvotes() {
-        return upvotes;
-    }
-
-    public void setUpvotes(Integer upvotes) {
-        this.upvotes = upvotes;
-    }
-
-    public Integer getDownvotes() {
-        return downvotes;
-    }
-
-    public void setDownvotes(Integer downvotes) {
-        this.downvotes = downvotes;
-    }
-
     public Timestamp getTsCreated() {
         return tsCreated;
     }
@@ -133,5 +115,13 @@ public class Post extends AbstractEntity {
 
     public void setFiles(Set<File> files) {
         this.files = files;
+    }
+
+    public Set<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(Set<Vote> votes) {
+        this.votes = votes;
     }
 }

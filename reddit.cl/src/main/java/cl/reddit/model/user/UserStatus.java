@@ -32,4 +32,11 @@ public class UserStatus extends AbstractEntity implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "UserStatus{" +
+                "id='" + id + '\'' +
+                '}';
+    }
 }

@@ -4,19 +4,17 @@ import cl.reddit.action.AbstractAction;
 import cl.reddit.model.user.dto.UserDTO;
 import cl.reddit.service.commons.RegistrationService;
 import org.apache.struts2.convention.annotation.*;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Namespace("")
 @ParentPackage("json-default")
 @Results({
-        @Result(name = "success", location = "index.jsp"),
-        @Result(name = "json", type = "json", params = {"root", "resultJSON"}),
-        @Result(name = "registered", location = "user/welcome.jsp")
+        @Result(name = "json", type = "json", params = {"root", "resultJSON"})
 })
 public class RegisterAction extends AbstractAction {
 
     private UserDTO userDTO;
-    private String resultJSON = null;
 
     private RegistrationService registrationService = new RegistrationService();
 
@@ -25,11 +23,11 @@ public class RegisterAction extends AbstractAction {
         boolean errors = false;
         JSONObject result = new JSONObject();
         result.put(STATUS, ERROR);
-        if(registrationService.nickAlreadyExists(getUserDTO().getNick().trim())) {
+        if(getRegistrationService().nickAlreadyExists(getUserDTO().getNick().trim())) {
             result.put("userDTO.nick", "Duplicate nick!");
             errors = true;
         }
-        if(registrationService.emailAlreadyExists(getUserDTO().getEmail().trim())) {
+        if(getRegistrationService().emailAlreadyExists(getUserDTO().getEmail().trim())) {
             result.put("userDTO.email", "Duplicate email!");
             errors = true;
         }
@@ -37,7 +35,7 @@ public class RegisterAction extends AbstractAction {
             result.put("userDTO.password", "Password must be at least 4 characters long!");
             errors = true;
         }
-        if(!errors && registrationService.registerUserFromUserDTO(getUserDTO())) {
+        if(!errors && getRegistrationService().registerUserFromUserDTO(getUserDTO())) {
             result.put(STATUS, OK);
         }
         setResultJSON(result.toString());
@@ -52,11 +50,11 @@ public class RegisterAction extends AbstractAction {
         this.userDTO = userDTO;
     }
 
-    public String getResultJSON() {
-        return resultJSON;
+    public RegistrationService getRegistrationService() {
+        return registrationService;
     }
 
-    public void setResultJSON(String resultJSON) {
-        this.resultJSON = resultJSON;
+    public void setRegistrationService(RegistrationService registrationService) {
+        this.registrationService = registrationService;
     }
 }

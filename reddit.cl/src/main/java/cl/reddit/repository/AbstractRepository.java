@@ -25,7 +25,7 @@ abstract class AbstractRepository<T extends AbstractEntity> {
         T result = null;
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        result = session.load(clazz, id);
+        result = session.get(clazz, id);
         session.getTransaction().commit();
         session.close();
         return result;
@@ -35,7 +35,9 @@ abstract class AbstractRepository<T extends AbstractEntity> {
         Session session = HibernateUtil.getSession();
         CriteriaQuery<T> cq = session.getCriteriaBuilder().createQuery(clazz);
         Root<T> entry = cq.from(clazz);
-        return session.createQuery(cq.select(entry)).getResultList();
+        List<T> result = session.createQuery(cq.select(entry)).getResultList();
+        session.close();
+        return result;
     };
 
     boolean delete(Serializable id, Class<T> clazz){

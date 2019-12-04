@@ -223,7 +223,7 @@
   </style>
 </head>
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="WEB-INF/content/header.jsp" />
 
 <div style="padding-left:16px">
   <div class="main">

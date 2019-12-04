@@ -2,11 +2,15 @@ package cl.reddit.repository;
 
 import cl.reddit.model.user.User;
 import cl.reddit.util.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class UserRepository extends AbstractRepository<User> {
@@ -43,5 +47,18 @@ public class UserRepository extends AbstractRepository<User> {
         query.setParameter("email", email);
         query.setParameter("nick", nick);
         return query.getResultList().size() > 0;
+    }
+
+    public User findByEmail(String email) {
+        User result = null;
+        Session session = HibernateUtil.getSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
+        Root<User> root = criteriaQuery.from(User.class);
+        List<User> users = session.createQuery(criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("email"), email))).getResultList();
+        if (users.size() == 1){
+            result = users.get(0);
+        }
+        return result;
     }
 }

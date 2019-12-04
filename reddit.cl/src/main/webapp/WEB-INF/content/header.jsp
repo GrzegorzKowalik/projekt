@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Marianna Dudzinska
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<s:include value="language_pack.js"/>
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -286,15 +288,15 @@
 </div>
 <div id="login" class="modal">
     <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
-    <form class="modal-content" action="/action_page.php">
+    <form class="modal-content" action='<s:url action="log-in"/>' method="post">
         <div class="container">
             <h1>Log in</h1>
             <hr>
-            <label><b>Name</b></label>
-            <input type="text" placeholder="Enter Username" name="username" required>
+            <label><b>Email</b></label>
+            <input type="text" placeholder="Enter email" name="userDTO.email" required>
 
             <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="userDTO.password" required>
 
             <label>
                 <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -330,6 +332,7 @@
             modal.style.display = "none";
         }
     }
+    var placeholder = document.getElementById("e")
 </script>
 </body>
 </html>
