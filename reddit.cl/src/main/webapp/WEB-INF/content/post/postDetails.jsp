@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: uranm
@@ -7,10 +8,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-</head>
 <body>
-
+<div style="padding-left:16px">
+    <div class="main">
+        <h2><s:property value="post.title"></h2>
+        <h5><s:property value="post.ts_created"/></h5>
+        <div class="fakeimg" style="height:200px;"></div>
+        <p><s:property value="post.body"></p>
+        <br>
+    </div>
+</div>
 </body>
 </html>
