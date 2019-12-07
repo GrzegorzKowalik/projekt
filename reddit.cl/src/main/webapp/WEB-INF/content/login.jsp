@@ -6,15 +6,6 @@
   Time: 09:08
   To change this template use File | Settings | File Templates.
 --%>
-<style type="text/css">
-    .errorMessage {
-        background-color:#FFCCCC;
-        border:1px solid #CC0000;
-        width:400px;
-        margin-bottom:8px;
-    }
-</style>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,7 +13,7 @@
     <s:include value="language_pack.js"/>
 </head>
 <body>
-<jsp:include page="user/styles/styleHead1.jsp" />
+<jsp:include page="user/styles/styleHead.jsp" />
 <%--<span onclick="document.getElementById('register').style.display='none'" class="close" title="Close Modal">&times;</span>--%>
 <form class="modal-content" action='<s:url action="log-in"/>' method="post">
     <div class="container">

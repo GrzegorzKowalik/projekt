@@ -214,6 +214,14 @@
         .namespace {
             font-size: 40px;
         }
+
+        .errorMessage {
+            background-color:#FFCCCC;
+            border:1px solid #CC0000;
+            width:400px;
+            margin-bottom:8px;
+        }
+
     </style>
 </head>
 <body>
