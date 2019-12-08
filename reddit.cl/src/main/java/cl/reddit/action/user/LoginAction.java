@@ -12,34 +12,40 @@ import org.json.JSONObject;
 @Namespace("")
 @ParentPackage("json-default")
 @Results({
-        @Result(name = "json", type = "json", params = {"root", "resultJSON"})
+//        @Result(name = "json", type = "json", params = {"root", "resultJSON"})
+        @Result(name = "logged", location = "index.jsp"),
+        @Result(name = "error", location = "login.jsp"),
+        @Result(name = "success", location = "login.jsp")
 })
 public class LoginAction extends AbstractAction {
 
     private UserDTO userDTO;
+    private final String LOGGED = "logged";
 
     @Action("log-in")
     public String userLogin(){
-        JSONObject result = new JSONObject();
-        result.put(STATUS, ERROR);
         if(getUserDTO() != null) {
             User userToLogin = getUserService().findByEmail(getUserDTO().getEmail());
             if (userToLogin != null) {
                 if (userToLogin.getPassword().equals(DigestUtils.sha256Hex(getUserDTO().getPassword()))) {
                     putUserInSession(userToLogin);
-                    result.put(STATUS, OK);
+                    return LOGGED;
                 } else {
-                    result.put("userDTO.password", "Wrong password!");
+                    addFieldError("userDTO.password", "Wrong password!");
                 }
             } else {
-                result.put("userDTO.email", "User with given email not found!");
+                addFieldError("userDTO.email", "User with given email not found!");
             }
         } else {
-            result.put("userDTO", "Not recognized object!");
+            addFieldError("userDTO", "Not recognized object!");
         }
-        setResultJSON(result.toString());
-        System.out.println(getUserFromSession());
-        return JSON;
+        return ERROR;
+    }
+
+    @Action("log-out")
+    public String userLogout(){
+        getSession().invalidate();
+        return SUCCESS;
     }
 
     public UserDTO getUserDTO() {

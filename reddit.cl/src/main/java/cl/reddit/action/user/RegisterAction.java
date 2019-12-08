@@ -10,36 +10,42 @@ import org.json.JSONObject;
 @Namespace("")
 @ParentPackage("json-default")
 @Results({
-        @Result(name = "json", type = "json", params = {"root", "resultJSON"})
+//        @Result(name = "json", type = "json", params = {"root", "resultJSON"})
+        @Result(name = "success", location = "register.jsp"),
+        @Result(name = "error", location = "register.jsp"),
+        @Result(name = "registered", location = "login.jsp")
 })
 public class RegisterAction extends AbstractAction {
 
     private UserDTO userDTO;
+    private final String REGISTERED = "registered";
 
     private RegistrationService registrationService = new RegistrationService();
+
 
     @Action("sign-in")
     public String signIn() {
         boolean errors = false;
-        JSONObject result = new JSONObject();
-        result.put(STATUS, ERROR);
-        if(getRegistrationService().nickAlreadyExists(getUserDTO().getNick().trim())) {
-            result.put("userDTO.nick", "Duplicate nick!");
-            errors = true;
+        if(userDTO == null) {
+            addFieldError("userDTO", "Object is null!");
+        } else {
+            if (getRegistrationService().nickAlreadyExists(getUserDTO().getNick().trim())) {
+                addFieldError("userDTO.nick", "Duplicate nick!");
+                errors = true;
+            }
+            if (getRegistrationService().emailAlreadyExists(getUserDTO().getEmail().trim())) {
+                addFieldError("userDTO.email", "Duplicate email!");
+                errors = true;
+            }
+            if (getUserDTO().getPassword().trim().length() < 4) {
+                addFieldError("userDTO.password", "Password must be at least 4 characters long!");
+                errors = true;
+            }
+            if (!errors && getRegistrationService().registerUserFromUserDTO(getUserDTO())) {
+                return REGISTERED;
+            }
         }
-        if(getRegistrationService().emailAlreadyExists(getUserDTO().getEmail().trim())) {
-            result.put("userDTO.email", "Duplicate email!");
-            errors = true;
-        }
-        if(getUserDTO().getPassword().trim().length() < 4) {
-            result.put("userDTO.password", "Password must be at least 4 characters long!");
-            errors = true;
-        }
-        if(!errors && getRegistrationService().registerUserFromUserDTO(getUserDTO())) {
-            result.put(STATUS, OK);
-        }
-        setResultJSON(result.toString());
-        return "json";
+        return ERROR;
     }
 
     public UserDTO getUserDTO() {

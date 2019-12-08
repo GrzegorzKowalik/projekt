@@ -2,54 +2,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: uranm
-  Date: 19.10.2019
-  Time: 18:10
+  Date: 08.12.2019
+  Time: 11:47
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-  <title>REDDIT.CL</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <jsp:include page="WEB-INF/content/user/styles/styleMain.jsp" />
-  <jsp:include page="WEB-INF/content/user/styles/styleHead.jsp" />
-</head>
 <body>
-<jsp:include page="WEB-INF/content/header.jsp" />
-
-<div style="padding-left:16px">
-  <div class="main">
-    <h2>TITLE HEADING</h2>
-    <h5>Title description, Dec 7, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text..</p>
-    <br>
-
-  </div>
-
-</div>
-
-<%--<script>
-  // Get the modal
-  var modal = document.getElementById('register');
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-
-  var modal = document.getElementById('login');
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-</script>--%>
-<footer style="position: relative; bottom:0;">
-  <h6>Made with &#10084;</h6>
-</footer>
+<s:action name="welcome" namespace="/" executeResult="true" />
 </body>
 </html>
-

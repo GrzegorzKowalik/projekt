@@ -21,12 +21,15 @@
         <p>Please fill in this form to create an account.</p>
         <hr>
         <label><b>Email</b></label>
+        <s:fielderror fieldName="userDTO.email"/>
         <input type="text" placeholder="Enter Email" name="userDTO.email" required>
 
         <label><b>Username</b></label>
+        <s:fielderror fieldName="userDTO.nick"/>
         <input type="text" placeholder="Enter Nickname" name="userDTO.nick" required>
 
         <label><b>Password</b></label>
+        <s:fielderror fieldName="userDTO.password"/>
         <input type="password" placeholder="Enter Password" name="userDTO.password" required>
 
         <label><b>Repeat Password</b></label>

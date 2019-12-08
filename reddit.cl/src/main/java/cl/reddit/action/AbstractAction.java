@@ -1,18 +1,19 @@
 package cl.reddit.action;
 
 import cl.reddit.model.user.User;
-import cl.reddit.repository.UserRepository;
 import cl.reddit.service.user.UserService;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
-public abstract class AbstractAction extends ActionSupport {
+public abstract class AbstractAction extends ActionSupport implements SessionAware {
 
     private UserService userService = new UserService();
 
-    private Map<String, Object> session = ActionContext.getContext().getSession();
+    private SessionMap session ;
     protected final String JSON = "json";
 
     //Session map keys
@@ -36,11 +37,15 @@ public abstract class AbstractAction extends ActionSupport {
         getSession().put(USER, user);
     }
 
-    protected User getUserFromSession() {
+    public User getUserFromSession() {
         return (User)getSession().get(USER);
     }
 
-    private Map<String, Object> getSession() {
+    public void setSession(Map<String, Object> session) {
+        this.session = (SessionMap)session;
+    }
+
+    protected SessionMap getSession() {
         return session;
     }
 
@@ -58,5 +63,12 @@ public abstract class AbstractAction extends ActionSupport {
 
     public void setResultJSON(String resultJSON) {
         this.resultJSON = resultJSON;
+    }
+
+    public boolean hasRole(String role) {
+        if (getUserFromSession() != null) {
+            return getUserFromSession().getUserRoles().stream().map(x -> x.getRole().getId()).collect(Collectors.toList()).contains(role);
+        }
+        return false;
     }
 }

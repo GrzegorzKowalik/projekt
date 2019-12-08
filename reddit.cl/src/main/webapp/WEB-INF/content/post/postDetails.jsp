@@ -9,12 +9,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
+<s:include value="../header.jsp">
+    <s:param name="hasRole"><s:property value="%{hasRole(\"ROLE_USER\")}"/></s:param>
+</s:include>
 <div style="padding-left:16px">
     <div class="main">
-        <h2><s:property value="post.title"></h2>
+        <h2><s:property value="post.title"/></h2>
         <h5><s:property value="post.ts_created"/></h5>
         <div class="fakeimg" style="height:200px;"></div>
-        <p><s:property value="post.body"></p>
+        <p>Some text..</p>
         <br>
     </div>
 </div>

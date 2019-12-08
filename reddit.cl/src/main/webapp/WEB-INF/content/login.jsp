@@ -20,9 +20,11 @@
         <h1>Log in</h1>
         <hr>
         <label><b>Email</b></label>
+        <s:fielderror fieldName="userDTO.email"/>
         <input type="text" placeholder="Enter email" name="userDTO.email" required>
 
         <label><b>Password</b></label>
+        <s:fielderror fieldName="userDTO.password"/>
         <input type="password" placeholder="Enter Password" name="userDTO.password" required>
 
         <label>
