@@ -11,8 +11,10 @@
 <head>
   <title>REDDIT.CL</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <s:include value="user/styles/styleMain.jsp" />
-  <s:include value="user/styles/styleHead.jsp" />
+  <div id="stylesInclude">
+    <s:include value="user/styles/styleMain2.jsp" />
+    <s:include value="user/styles/styleHead.jsp" />
+  </div>
 </head>
 <body>
 <s:include value="header.jsp">
@@ -53,5 +55,11 @@
   <h6>Made with &#10084;</h6>
 </footer>
 </body>
+<script>
+  var M1style = "user/styles/styleMain2.jsp";
+  var M2style = "user/styles/styleMain1.jsp";
+
+  var Hstyle = "user/styles/styleHead.jsp";
+</script>
 </html>
 

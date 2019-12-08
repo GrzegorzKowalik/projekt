@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Marianna Dudzinska
   Date: 2019-12-07
-  Time: 16:32
+  Time: 16:38
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,33 +14,31 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
+            background-color: #171A1C;
         }
 
         .topnav {
-            background-color: #333;
             overflow: hidden;
+            background-color: #1abc9c;
         }
 
-        /* Style the links inside the navigation bar */
         .topnav a {
             float: left;
             display: block;
-            color: #f2f2f2;
+            color: black;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
             font-size: 17px;
         }
 
-        /* Change the color of links on hover */
         .topnav a:hover {
             background-color: #ddd;
             color: black;
         }
 
-        /* Add an active class to highlight the current page */
         .topnav a.active {
-            background-color: #4CAF50;
+            background-color: #2196F3;
             color: white;
         }
 
@@ -109,7 +107,7 @@
 
         /* Set a style for all buttons */
         button {
-            background-color: #4CAF50;
+            background-color: #555555;
             color: white;
             padding: 14px 20px;
             margin: 8px 0;
@@ -126,7 +124,7 @@
         /* Extra styles for the cancel button */
         .cancelbtn {
             padding: 14px 20px;
-            background-color: #f44336;
+            background-color: #2196F3;
         }
 
         /* Float cancel and signup buttons and add an equal width */
@@ -202,34 +200,24 @@
                 width: 100%;
             }
         }
-        /* Header/logo Title */
-        .header {
-            padding: 80px;
-            text-align: center;
-            background: #1abc9c;
-            color: white;
+
+        /* Main column */
+        .main {
+            -ms-flex: 50%; /* IE10 */
+            width: 50%;
+            background-color: #333333;
+            padding: 20px;
+            margin-left: auto;
+            margin-right: auto;
+
         }
 
-        .headerAdmin {
-            padding: 60px;
-            text-align: center;
-            background: #1abc9c;
-            color: white;
-            font-size: 30px;
+        /* Fake image, just for this example */
+        .fakeimg {
+            background-color: #aaa;
+            width: 100%;
+            padding: 20px;
         }
-
-        /* Increase the font size of the heading */
-        .namespace {
-            font-size: 40px;
-        }
-
-        .errorMessage {
-            background-color:#FFCCCC;
-            border:1px solid #CC0000;
-            width:400px;
-            margin-bottom:8px;
-        }
-
     </style>
 </head>
 <body>
