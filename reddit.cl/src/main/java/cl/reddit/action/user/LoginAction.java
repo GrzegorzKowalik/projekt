@@ -45,7 +45,7 @@ public class LoginAction extends AbstractAction {
     @Action("log-out")
     public String userLogout(){
         getSession().invalidate();
-        return SUCCESS;
+        return LOGGED;
     }
 
     public UserDTO getUserDTO() {
