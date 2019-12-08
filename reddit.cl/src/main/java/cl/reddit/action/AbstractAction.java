@@ -1,17 +1,22 @@
 package cl.reddit.action;
 
+import cl.reddit.model.post.Post;
 import cl.reddit.model.user.User;
+import cl.reddit.service.post.PostService;
 import cl.reddit.service.user.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public abstract class AbstractAction extends ActionSupport implements SessionAware {
 
     private UserService userService = new UserService();
+    protected PostService postService = new PostService();
 
     private SessionMap session ;
     protected final String JSON = "json";
@@ -70,5 +75,11 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
             return getUserFromSession().getUserRoles().stream().map(x -> x.getRole().getId()).collect(Collectors.toList()).contains(role);
         }
         return false;
+    }
+
+    public List<Post> getAllPosts() {
+        List<Post> list = postService.findAll();
+        Collections.reverse(list);
+        return list;
     }
 }

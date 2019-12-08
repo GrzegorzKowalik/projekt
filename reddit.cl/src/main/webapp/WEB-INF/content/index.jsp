@@ -20,18 +20,9 @@
 <s:include value="header.jsp">
   <s:param name="hasRole"><s:property value="%{hasRole(\"ROLE_USER\")}"/></s:param>
 </s:include>
-
-<div style="padding-left:16px">
-  <div class="main">
-    <h2>TITLE HEADING</h2>
-    <h5>Title description, Dec 7, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text..</p>
-    <br>
-
-  </div>
-
-</div>
+<s:include value="post/posts.jsp">
+  <s:param name="listType"><s:property value="'ALL'"/></s:param>
+</s:include>
 
 <%--<script>
   // Get the modal

@@ -3,12 +3,12 @@ package cl.reddit.action.user;
 import cl.reddit.action.AbstractAction;
 import cl.reddit.model.user.dto.UserDTO;
 import cl.reddit.service.commons.RegistrationService;
-import org.apache.struts2.convention.annotation.*;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
 
 @Namespace("")
-@ParentPackage("json-default")
 @Results({
 //        @Result(name = "json", type = "json", params = {"root", "resultJSON"})
         @Result(name = "success", location = "register.jsp"),

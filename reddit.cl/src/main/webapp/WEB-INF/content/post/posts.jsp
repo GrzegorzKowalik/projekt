@@ -9,16 +9,32 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <body>
+<s:set var="hasRole">${param.hasRole}</s:set>
+<s:set var="listType">${param.listType}</s:set>
+<s:set var="categoryId">${param.categoryId}</s:set>
+<s:set var="userId">${param.userId}</s:set>
 <div>
-    <s:iterator value="paginatedPosts">
+    <h2><s:property value="userId"/> </h2>
+</div>
+<div>
+    <h2><s:property value="%{getAllPosts()}"/> </h2>
+</div>
+<div style="padding-left:16px">
+<div class="main">
+    <s:iterator value="%{'CATEGORY'.equals(#listType) && Integer.parseInt(categoryId) > 0 ? getAllPostsFromCategory(#categoryId) : 'USER'.equals(#listType) && Integer.parseInt(userId) > 0 ? getAllPostsOfUser(#userId) : getAllPosts()}" var="post">
         <tr>
             <td>
-                <h2><s:property value="title"/></h2>
+                <h2>TIT: <s:property value="title"/></h2>
                 <p><s:property value="body"/></p>
-                <div class="fakeimg" style="height:200px;">Image</div>
+                <div class="fakeimg" style="height:200px;"><img src="<s:property value="file.path"/>" alt="<s:property value="id"/>"></div>
             </td>
         </tr>
+        <tr>
+            <td><a>upvote</a></td>
+            <td><a>downvote</a></td>
+        </tr>
     </s:iterator>
+</div>
 </div>
 </body>
 </html>

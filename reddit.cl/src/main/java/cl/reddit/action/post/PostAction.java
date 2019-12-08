@@ -8,12 +8,14 @@ import cl.reddit.service.post.PostService;
 import org.apache.struts2.convention.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @ParentPackage("json-default")
 @Namespace("/post")
 @Results({
         @Result(name = "success", location = "postDetails.jsp"),
+        @Result(name = "error", location = "createPost.jsp"),
+        @Result(name = "add", location = "createPost.jsp"),
+        @Result(name = "error", location = "createPost.jsp"),
         @Result(name = "error", location = "createPost.jsp"),
         @Result(name = "json", type = "json", params = {"root", "resultJSON"})
 })
@@ -24,7 +26,7 @@ public class PostAction extends AbstractAction {
     private List<Post> paginatedPosts;
     private List <java.io.File> files;
     private List <File> fileModels;
-    private PostService postService = new PostService();
+
 
     @Action("add-post")
     public String addPost() {
