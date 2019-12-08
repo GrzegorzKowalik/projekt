@@ -14,6 +14,7 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
+            background-color: hotpink;
         }
 
         .topnav {
@@ -58,7 +59,7 @@
             padding: 6px 10px;
             margin-top: 8px;
             margin-right: 16px;
-            background-color: #555;
+            background-color: lightpink;
             color: white;
             font-size: 17px;
             border: none;
@@ -66,7 +67,7 @@
         }
 
         .topnav .right-navbar button:hover {
-            background-color: green;
+            background-color: deeppink;
         }
 
         @media screen and (max-width: 600px) {
@@ -106,7 +107,7 @@
 
         /* Set a style for all buttons */
         button {
-            background-color: #4CAF50;
+            background-color: deeppink;
             color: white;
             padding: 14px 20px;
             margin: 8px 0;
@@ -204,7 +205,7 @@
         .main {
             -ms-flex: 60%; /* IE10 */
             width: 60%;
-            background-color: floralwhite;
+            background-color: pink;
             padding: 20px;
             margin-left: auto;
             margin-right: auto;

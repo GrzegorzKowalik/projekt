@@ -12,7 +12,7 @@
   <title>Admin panel</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div id="stylesInclude">
-    <s:include value="user/styles/styleMain2.jsp" />
+    <s:include value="user/styles/styleMain.jsp" />
     <s:include value="user/styles/styleHead.jsp" />
   </div>
 </head>
@@ -34,7 +34,7 @@
 <script>
   function onClickDark() {
     console.log("dark");
-    var bright = "styleMain1.jsp";
+    var bright = "styleMain.jsp";
     var dark = "styleMain2.jsp";
     var str = document.getElementById("stylesInclude").innerHTML;
     var res = str.replace(bright, dark);
@@ -43,7 +43,7 @@
   }
   function onClickBright() {
     console.log("bright");
-    var bright = "styleMain1.jsp";
+    var bright = "styleMain.jsp";
     var dark = "styleMain2.jsp";
 
     var Dtheme = "background-color: #171A1C;";
