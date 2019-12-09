@@ -27,7 +27,6 @@
                 <h2><a href="<s:url action="post/show-details"/>?post.id=<s:property value="id"/>" style="text-decoration: none"><s:property value="title"/></a></h2>
                 <p><s:property value="body"/></p>
                 <img src="<%=request.getContextPath()%>/static/test.jpg" alt="<s:property value="id"/>">
-                <a><%=request.getContextPath()%>/static/test.jpg</a>
             </td>
         </tr>
         <tr>
