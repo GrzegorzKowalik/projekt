@@ -7,9 +7,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -21,12 +20,13 @@ public class Comment extends AbstractEntity {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = { CascadeType.ALL})
     @JoinColumn(name = "id_parent", referencedColumnName = "id")
     private Comment parent;
 
+    @OrderBy("tsCreated desc")
     @OneToMany(mappedBy = "parent")
-    private Set<Comment> subComments;
+    private Set<Comment> subComments = new LinkedHashSet<Comment>();
 
     @ManyToOne
     @NotNull
@@ -34,7 +34,6 @@ public class Comment extends AbstractEntity {
     private User user;
 
     @ManyToOne
-    @NotNull
     @JoinColumn(name = "id_post", referencedColumnName = "id")
     private Post post;
 

@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<s:include value="language_pack.js"/>
+<%--<s:include value="language_pack.js"/>--%>
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,12 +16,12 @@
 <body>
 <s:set var="hasRole">${param.hasRole}</s:set>
 <div class="topnav">
-    <a id="namespace"> reddit.cl </a>
-    <a class="active" href="#home">Home</a>
-    <a href="#memes">Memes</a>
-    <a href="#category2">category2</a>
-    <a href="#category3">category3</a>
-    <input type="text" placeholder="Search" name="search">
+    <a id="namespace"><b>reddit.cl</b> </a>
+    <a class="active" href="#home"><b>Home</b></a>
+    <a href="#memes"><b>Memes</b></a>
+    <a href="#category2"><b>FUN</b></a>
+   <%-- <a href="#category3">category3</a>
+    <input type="text" placeholder="Search" name="search">--%>
 
     <div class="right-navbar">
         <s:if test="#hasRole">

@@ -9,16 +9,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
+<s:include value="../user/styles/styleMain.jsp" />
 <s:include value="../header.jsp">
     <s:param name="hasRole"><s:property value="%{hasRole(\"ROLE_USER\")}"/></s:param>
 </s:include>
+<br>
 <div style="padding-left:16px">
     <div class="main">
         <h2><s:property value="post.title"/></h2>
-        <h5><s:property value="post.ts_created"/></h5>
-        <div class="fakeimg" style="height:200px;"></div>
-        <p>Some text..</p>
+        <h5><s:property value="post.tsCreated"/></h5>
+        <p><s:property value="body"/></p>
+        <img src="<%=request.getContextPath()%>/static/test.jpg" alt="<s:property value="id"/>" style="max-width: 600px">
         <br>
+        <s:iterator value="post.comments" var="comment">
+            <h2><s:property value="#comment.subComments"/></h2>
+            <a href="<s:url action="user/get-user"/>?user.id="<s:property value="comment.user.id"/>><s:property value="comment.user.nick"/></a>
+        </s:iterator>
     </div>
 </div>
 </body>

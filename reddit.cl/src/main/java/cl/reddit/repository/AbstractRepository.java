@@ -17,7 +17,6 @@ abstract class AbstractRepository<T extends AbstractEntity> {
         session.beginTransaction();
         result = (Long)session.save(t);
         session.getTransaction().commit();
-        session.close();
         return result;
     };
 
@@ -27,7 +26,6 @@ abstract class AbstractRepository<T extends AbstractEntity> {
         session.beginTransaction();
         result = session.get(clazz, id);
         session.getTransaction().commit();
-        session.close();
         return result;
     };
 
@@ -36,7 +34,6 @@ abstract class AbstractRepository<T extends AbstractEntity> {
         CriteriaQuery<T> cq = session.getCriteriaBuilder().createQuery(clazz);
         Root<T> entry = cq.from(clazz);
         List<T> result = session.createQuery(cq.select(entry)).getResultList();
-        session.close();
         return result;
     };
 
@@ -47,7 +44,6 @@ abstract class AbstractRepository<T extends AbstractEntity> {
         session.delete(id);
         result = session.load(clazz, id) != null;
         session.getTransaction().commit();
-        session.close();
         return result;
     }
 
@@ -57,7 +53,6 @@ abstract class AbstractRepository<T extends AbstractEntity> {
         session.beginTransaction();
         result = (Long)session.merge(t) > 0;
         session.getTransaction().commit();
-        session.close();
         return result;
     };
 }

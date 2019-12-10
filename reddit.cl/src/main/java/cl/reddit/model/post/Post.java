@@ -2,6 +2,7 @@ package cl.reddit.model.post;
 
 import cl.reddit.model.AbstractEntity;
 import cl.reddit.model.category.Category;
+import cl.reddit.model.comment.Comment;
 import cl.reddit.model.file.File;
 import cl.reddit.model.user.User;
 import cl.reddit.model.vote.Vote;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
@@ -51,6 +53,10 @@ public class Post extends AbstractEntity {
 
     @OneToMany(mappedBy = "post")
     private Set<Vote> votes;
+
+    @OrderBy("tsCreated desc")
+    @OneToMany(mappedBy = "post")
+    private Set<Comment> comments = new LinkedHashSet<Comment>();
 
     @Override
     public Long getId() {
@@ -123,5 +129,13 @@ public class Post extends AbstractEntity {
 
     public void setVotes(Set<Vote> votes) {
         this.votes = votes;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

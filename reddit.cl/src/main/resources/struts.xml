@@ -8,7 +8,7 @@
     <constant name="struts.action.extension" value="cl,," />
     <constant name="struts.serve.static" value="false" />
     <constant name="struts.convention.result.path" value="/WEB-INF/content/" />
-    <constant name="struts.action.excludePattern" value="/static/*"/>
+    <constant name="struts.action.excludePattern" value="/static/*.?"/>
     <package name="default" namespace="/" extends="struts-default">
 
     </package>
