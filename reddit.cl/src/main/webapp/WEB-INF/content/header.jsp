@@ -25,12 +25,12 @@
 
     <div class="right-navbar">
         <s:if test="#hasRole">
-            <button onclick="location.href ='<s:url action="log-out"/>'" style="width:auto;">Logout</button>
-            <button onclick="location.href ='<s:url action="upload"/>'" style="width:auto;">Upload</button>
+            <button onclick="location.href ='/reddit_cl_war_exploded/log-out.cl'" style="width:auto;">Logout</button>
+            <button onclick="location.href ='/reddit_cl_war_exploded/upload.cl'" style="width:auto;">Upload</button>
         </s:if>
         <s:else>
-            <button onclick="location.href ='<s:url action="login"/>'" style="width:auto;">Login</button>
-            <button onclick="location.href ='<s:url action="register"/>'" style="width:auto">Register</button>
+            <button onclick="location.href ='/reddit_cl_war_exploded/login.cl'" style="width:auto;">Login</button>
+            <button onclick="location.href ='/reddit_cl_war_exploded/register.cl'" style="width:auto">Register</button>
         </s:else>
     </div>
 </div>
