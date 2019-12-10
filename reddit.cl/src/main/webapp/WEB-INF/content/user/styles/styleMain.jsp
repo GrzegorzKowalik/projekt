@@ -218,6 +218,12 @@
             width: 100%;
             padding: 20px;
         }
+
+        .postImage{
+            width: 90%;
+            padding: 5px;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
