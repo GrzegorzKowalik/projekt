@@ -26,7 +26,7 @@
             <div class="main">
                 <tr>
                     <td>
-                        <h2><a href="<s:url action="post/show-details"/>?post.id=<s:property value="id"/>" style="text-decoration: none"><s:property value="title"/></a></h2>
+                        <h2><a href="<%=request.getContextPath()%>/post/show-details?post.id=<s:property value="id"/>" style="text-decoration: none"><s:property value="title"/></a></h2>
                         <p><s:property value="body"/></p>
 
                             <img class="center" src="<s:if test="#stat.even"><%=request.getContextPath()%>/static/test.jpg</s:if><s:else><%=request.getContextPath()%>/static/test2.jpg</s:else>" alt="<s:property value="id"/>" style="max-width: 600px">
