@@ -222,8 +222,8 @@
         .postImage{
             width: 90%;
             padding: 5px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 5%;
+            margin-right: 5%;
         }
     </style>
 </head>

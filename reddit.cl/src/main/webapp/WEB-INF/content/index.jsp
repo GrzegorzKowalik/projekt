@@ -12,7 +12,7 @@
   <title>REDDIT.CL</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div id="stylesInclude">
-    <s:include value="user/styles/styleMain.jsp" />
+    <s:include value="user/styles/styleMain2.jsp" />
     <s:include value="user/styles/styleHead.jsp" />
   </div>
 </head>

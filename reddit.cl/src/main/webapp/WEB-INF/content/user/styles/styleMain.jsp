@@ -59,7 +59,7 @@
             padding: 6px 10px;
             margin-top: 8px;
             margin-right: 16px;
-            background-color: lightpink;
+            background-color: grey;
             color: white;
             font-size: 17px;
             border: none;
@@ -222,7 +222,8 @@
         .postImage{
             width: 90%;
             padding: 5px;
-            justify-content: center;
+            margin-left: 5%;
+            margin-right: 5%;
         }
     </style>
 </head>
