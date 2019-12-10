@@ -9,9 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
+<s:include value="../user/styles/styleMain.jsp" />
 <s:include value="../header.jsp">
     <s:param name="hasRole"><s:property value="%{hasRole(\"ROLE_USER\")}"/></s:param>
 </s:include>
+<br>
 <div style="padding-left:16px">
     <div class="main">
         <h2><s:property value="post.title"/></h2>

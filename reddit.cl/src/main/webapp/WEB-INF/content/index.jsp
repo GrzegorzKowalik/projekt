@@ -18,6 +18,7 @@
 <s:include value="header.jsp">
   <s:param name="hasRole"><s:property value="%{hasRole(\"ROLE_USER\")}"/></s:param>
 </s:include>
+<br>
 <div>
 <s:include value="post/posts.jsp">
   <s:param name="listType">
