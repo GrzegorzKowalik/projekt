@@ -28,16 +28,16 @@
                     <td>
                         <h2><a href="<%=request.getContextPath()%>/post/show-details?post.id=<s:property value="id"/>" style="text-decoration: none"><s:property value="title"/></a></h2>
                         <p><s:property value="body"/></p>
-
-                            <img class="center" src="<s:if test="#stat.even"><%=request.getContextPath()%>/static/test.jpg</s:if><s:else><%=request.getContextPath()%>/static/test2.jpg</s:else>" alt="<s:property value="id"/>" style="width: 100%">
-
+                        <s:iterator value="#post.files" var="file">
+                        <img class="center" src="<%=request.getContextPath()%><s:property value="#file.path"/> " alt="<s:property value="id"/>" style="max-width: 100%">
+                        </s:iterator>
                     </td>
                 </tr>
                 <br>
-                <tr>
-                    <td><a>upvote</a></td>
-                    <td><a>downvote</a></td>
-                </tr>
+<%--                <tr>--%>
+<%--                    <td><a>upvote</a></td>--%>
+<%--                    <td><a>downvote</a></td>--%>
+<%--                </tr>--%>
             </div>
             <br>
             <%--<div class="postPlace">

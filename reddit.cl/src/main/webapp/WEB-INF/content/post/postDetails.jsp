@@ -19,11 +19,23 @@
         <h2><s:property value="post.title"/></h2>
         <h5><s:property value="post.tsCreated"/></h5>
         <p><s:property value="body"/></p>
-        <img src="<%=request.getContextPath()%>/static/test.jpg" alt="<s:property value="id"/>" style="width: 100%">
+        <s:iterator value="post.files" var="file">
+            <img class="center" src="<%=request.getContextPath()%><s:property value="#file.path"/> " alt="<s:property value="id"/>" style="max-width: 100%">
+        </s:iterator>
         <br>
         <s:iterator value="post.comments" var="comment">
-            <h2><s:property value="#comment.subComments"/></h2>
-            <a href="<s:url action="user/get-user"/>?user.id="<s:property value="comment.user.id"/>><s:property value="comment.user.nick"/></a>
+            <a href="<%=request.getContextPath()%>user/get-user?user.id=<s:property value="#comment.user.id"/>"><s:property value="#comment.user.nick"/></a>
+            <a><s:property value="#comment.body"/> </a>
+            <s:iterator value="#comment.files" var="comFile">
+                <img class="center" src="<%=request.getContextPath()%><s:property value="#comFile.path"/> " alt="<s:property value="id"/>" style="max-width: 100%">
+            </s:iterator>
+            <s:iterator value="#comment.subComments" var="sub">
+                <tr><td><a href="<%=request.getContextPath()%>user/get-user?user.id=<s:property value="#sub.user.id"/>"><s:property value="#sub.user.nick"/></a></td></tr>
+                <tr><td><a><s:property value="#sub.body"/> </a></td></tr>
+                <s:iterator value="#sub.files" var="subFile">
+                    <tr><td><img class="center" src="<%=request.getContextPath()%><s:property value="#subFile.path"/> " alt="<s:property value="id"/>" style="max-width: 100%"></td></tr>
+                </s:iterator>
+            </s:iterator>
         </s:iterator>
     </div>
 </div>
