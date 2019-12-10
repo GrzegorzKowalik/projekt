@@ -11,7 +11,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <s:include value="user/styles/styleHead.jsp" />
+    <s:include value="user/styles/styleHead2.jsp" />
 </head>
 <body>
 <s:set var="hasRole">${param.hasRole}</s:set>
