@@ -19,7 +19,7 @@
         <h2><s:property value="post.title"/></h2>
         <h5><s:property value="post.tsCreated"/></h5>
         <p><s:property value="body"/></p>
-        <img src="<%=request.getContextPath()%>/static/test.jpg" alt="<s:property value="id"/>" style="max-width: 600px">
+        <img src="<%=request.getContextPath()%>/static/test.jpg" alt="<s:property value="id"/>" style="width: 100%">
         <br>
         <s:iterator value="post.comments" var="comment">
             <h2><s:property value="#comment.subComments"/></h2>
