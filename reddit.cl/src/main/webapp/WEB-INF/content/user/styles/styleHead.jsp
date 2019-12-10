@@ -19,6 +19,9 @@
         .topnav {
             background-color: #333;
             overflow: hidden;
+            width: 100%;
+            position: fixed;
+            top: 0;
         }
 
         /* Style the links inside the navigation bar */

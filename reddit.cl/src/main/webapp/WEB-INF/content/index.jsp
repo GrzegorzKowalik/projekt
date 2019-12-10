@@ -49,11 +49,5 @@
   <h6>Made with &#10084;</h6>
 </footer>
 </body>
-<script>
-  var M1style = "user/styles/styleMain2.jsp";
-  var M2style = "user/styles/styleMain1.jsp";
-
-  var Hstyle = "user/styles/styleHead.jsp";
-</script>
 </html>
 

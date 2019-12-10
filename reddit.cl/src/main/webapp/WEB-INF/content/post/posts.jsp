@@ -13,7 +13,7 @@
 <s:set var="listType">${param.listType}</s:set>
 <s:set var="categoryId">${param.categoryId}</s:set>
 <s:set var="userId">${param.userId}</s:set>
-<%--<div>
+<div>
     <h2><s:property value="userId"/> </h2>
 </div>
 <div>

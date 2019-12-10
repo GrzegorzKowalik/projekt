@@ -59,7 +59,7 @@
             padding: 6px 10px;
             margin-top: 8px;
             margin-right: 16px;
-            background-color: lightpink;
+            background-color: grey;
             color: white;
             font-size: 17px;
             border: none;
@@ -212,12 +212,36 @@
 
         }
 
+        .postPlace {
+            width: 120%;
+            background-color: hotpink;
+            overflow: visible;
+            margin-left: -50px;
+            margin-right: -90px;
+
+        }
+
         /* Fake image, just for this example */
         .fakeimg {
             background-color: #aaa;
             width: 100%;
             padding: 20px;
         }
+
+        .postImage{
+            width: 90%;
+            padding: 5px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        .postDiv {
+            padding: 5px;
+        }
+
+        .backgroundDiv {
+            background-color: hotpink;
+        }
+
     </style>
 </head>
 <body>
