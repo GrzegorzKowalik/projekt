@@ -212,6 +212,15 @@
 
         }
 
+        .postPlace {
+            width: 120%;
+            background-color: hotpink;
+            overflow: visible;
+            margin-left: -50px;
+            margin-right: -90px;
+
+        }
+
         /* Fake image, just for this example */
         .fakeimg {
             background-color: #aaa;
@@ -225,6 +234,14 @@
             margin-left: 5%;
             margin-right: 5%;
         }
+        .postDiv {
+            padding: 5px;
+        }
+
+        .backgroundDiv {
+            background-color: hotpink;
+        }
+
     </style>
 </head>
 <body>

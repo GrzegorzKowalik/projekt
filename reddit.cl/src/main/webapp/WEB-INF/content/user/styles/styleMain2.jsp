@@ -225,6 +225,16 @@
             margin-left: 5%;
             margin-right: 5%;
         }
+
+        .postDiv {
+            padding: 5px;
+        }
+
+        .backgroundDiv {
+            margin-left: 0;
+            margin-right: 0;
+            background-color: hotpink;
+        }
     </style>
 </head>
 <body>
