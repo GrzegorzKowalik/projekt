@@ -13,12 +13,12 @@
 <s:set var="listType">${param.listType}</s:set>
 <s:set var="categoryId">${param.categoryId}</s:set>
 <s:set var="userId">${param.userId}</s:set>
-<div>
+<%--<div>
     <h2><s:property value="userId"/> </h2>
 </div>
 <div>
     <h2><s:property value="%{getAllPosts()}"/> </h2>
-</div>
+</div>--%>
 <div style="padding-left:16px">
     <s:include value="../user/styles/styleMain.jsp" />
 <div class="main">
@@ -35,6 +35,7 @@
             <td><a>upvote</a></td>
             <td><a>downvote</a></td>
         </tr>
+        <br>
     </s:iterator>
 </div>
 </div>
