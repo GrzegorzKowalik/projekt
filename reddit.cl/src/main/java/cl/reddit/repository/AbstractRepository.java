@@ -51,7 +51,7 @@ abstract class AbstractRepository<T extends AbstractEntity> {
         boolean result = false;
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
-        result = (Long)session.merge(t) > 0;
+        result = (T)session.merge(t) != null;
         session.getTransaction().commit();
         return result;
     };

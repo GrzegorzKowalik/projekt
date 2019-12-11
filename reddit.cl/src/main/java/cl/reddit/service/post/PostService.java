@@ -21,7 +21,7 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public PostRepository getPostRepository() {
+    private PostRepository getPostRepository() {
         return postRepository;
     }
 

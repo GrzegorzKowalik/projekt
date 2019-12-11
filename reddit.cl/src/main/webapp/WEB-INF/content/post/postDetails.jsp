@@ -46,9 +46,15 @@
         </s:iterator>
         <br>
         <label><b>Add comment</b></label>
-        <s:fielderror fieldName="comment.body"/>
-        <input type="text" placeholder="Write comment..." name="comment.body" required>
-        <button>Post</button>
+        <form action='<s:action name="post/add-comment.cl"/>' method="post">
+<%--            <s:hidden name="post" value="post"/>--%>
+            <p><s:property value="post"/></p>
+            <s:hidden name="user" value="post.user"/>
+            <p><s:property value="post.user"/></p>
+            <s:fielderror fieldName="comment.body"/>
+            <input type="text" placeholder="Write comment..." name="comment.body" required>
+            <button type="submit">Add comment</button>
+        </form>
     </div>
 </div>
 </body>

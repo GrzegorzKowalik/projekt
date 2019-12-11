@@ -2,6 +2,7 @@ package cl.reddit.action;
 
 import cl.reddit.model.post.Post;
 import cl.reddit.model.user.User;
+import cl.reddit.service.post.CommentService;
 import cl.reddit.service.post.PostService;
 import cl.reddit.service.user.UserService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,6 +18,7 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
 
     private UserService userService = new UserService();
     protected PostService postService = new PostService();
+    protected CommentService commentService = new CommentService();
 
     private SessionMap session ;
     protected final String JSON = "json";
@@ -58,9 +60,6 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
         return userService;
     }
 
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
 
     public String getResultJSON() {
         return resultJSON;

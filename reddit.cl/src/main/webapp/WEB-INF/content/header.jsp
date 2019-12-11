@@ -11,7 +11,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <s:include value="user/styles/styleHead2.jsp" />
+    <s:include value="user/styles/styleHead.jsp" />
 </head>
 <body>
 <s:set var="hasRole">${param.hasRole}</s:set>
@@ -25,12 +25,12 @@
 
     <div class="right-navbar">
         <s:if test="#hasRole">
-            <button onclick="location.href ='/reddit_cl_war_exploded/log-out.cl'" style="width:auto;">Logout</button>
-            <button onclick="location.href ='/reddit_cl_war_exploded/upload.cl'" style="width:auto;">Upload</button>
+            <button onclick="location.href ='<%=request.getContextPath()%>/log-out.cl'" style="width:auto;">Logout</button>
+            <button onclick="location.href ='<%=request.getContextPath()%>/upload.cl'" style="width:auto;">Upload</button>
         </s:if>
         <s:else>
-            <button onclick="location.href ='/reddit_cl_war_exploded/login.cl'" style="width:auto;">Login</button>
-            <button onclick="location.href ='/reddit_cl_war_exploded/register.cl'" style="width:auto">Register</button>
+            <button onclick="location.href ='<%=request.getContextPath()%>/login.cl'" style="width:auto;">Login</button>
+            <button onclick="location.href ='<%=request.getContextPath()%>/register.cl'" style="width:auto">Register</button>
         </s:else>
     </div>
 </div>

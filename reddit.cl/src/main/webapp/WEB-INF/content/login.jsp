@@ -16,7 +16,7 @@
 <body>
 <jsp:include page="user/styles/styleHead.jsp" />
 <%--<span onclick="document.getElementById('register').style.display='none'" class="close" title="Close Modal">&times;</span>--%>
-<form class="modal-content" action='<s:url action="log-in"/>' method="post">
+<form class="modal-content" action='<%=request.getContextPath()%>/log-in.cl' method="post">
     <div class="container">
         <h1>Log in</h1>
         <hr>

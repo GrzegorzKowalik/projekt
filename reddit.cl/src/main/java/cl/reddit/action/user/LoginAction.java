@@ -9,6 +9,8 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
+import java.sql.Timestamp;
+
 
 @Namespace("/")
 @Results({
@@ -28,6 +30,8 @@ public class LoginAction extends AbstractAction {
             User userToLogin = getUserService().findByEmail(getUserDTO().getEmail());
             if (userToLogin != null) {
                 if (userToLogin.getPassword().equals(DigestUtils.sha256Hex(getUserDTO().getPassword()))) {
+                    userToLogin.setTsLastLogged(new Timestamp(System.currentTimeMillis()));
+                    getUserService().getUserRepository().update(userToLogin);
                     putUserInSession(userToLogin);
                     return LOGGED;
                 } else {
