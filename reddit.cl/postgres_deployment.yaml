@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reddit-postgres-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reddit-postgres
+  template:
+    metadata:
+      labels:
+        app: reddit-postgres
+    spec:
+      containers:
+        - name: reddit-postgres
+          image: postgres:12.0
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: reddit.cl
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: reddit123
+          volumeMounts:
+            - mountPath: "/var/lib/postgresql/data"
+              name: "mendix-pgdata"
+      volumes:
+        - hostPath:
+            path: "/home/docker/pgdata"
+          name: mendix-pgdata
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: reddit-postgres-svc
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+  selector:
+    app: reddit-postgres
