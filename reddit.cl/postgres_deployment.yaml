@@ -26,11 +26,11 @@ spec:
               value: reddit123
           volumeMounts:
             - mountPath: "/var/lib/postgresql/data"
-              name: "mendix-pgdata"
+              name: "reddit-volume"
       volumes:
-        - hostPath:
-            path: "/home/docker/pgdata"
-          name: mendix-pgdata
+        - name: reddit-volume
+          persistentVolumeClaim:
+            claimName: reddit-postgres-claim
 
 ---
 
@@ -44,3 +44,34 @@ spec:
     - port: 5432
   selector:
     app: reddit-postgres
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: reddit-postgres-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/reddit_postgres"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: reddit-postgres-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
