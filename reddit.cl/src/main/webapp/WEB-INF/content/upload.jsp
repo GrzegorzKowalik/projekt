@@ -9,8 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Register</title>
-    <s:include value="language_pack.js"/>
+    <title>Upload</title>
 </head>
 <body>
 <jsp:include page="user/styles/styleHead.jsp" />

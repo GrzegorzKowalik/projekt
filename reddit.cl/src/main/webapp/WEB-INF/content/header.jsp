@@ -17,9 +17,7 @@
 <s:set var="hasRole">${param.hasRole}</s:set>
 <div class="topnav">
     <a id="namespace"><b>reddit.cl</b> </a>
-    <a class="active" href="#home"><b>Home</b></a>
-    <a href="#memes"><b>Memes</b></a>
-    <a href="#category2"><b>FUN</b></a>
+    <a class="active" href="<%=request.getContextPath()%>"><b>Home</b></a>
    <%-- <a href="#category3">category3</a>
     <input type="text" placeholder="Search" name="search">--%>
 
