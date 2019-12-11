@@ -10,7 +10,6 @@
 <html>
 <head>
     <title>Register</title>
-    <s:include value="language_pack.js"/>
     <s:include value="user/styles/styleMain2.jsp" />
 </head>
 <body>

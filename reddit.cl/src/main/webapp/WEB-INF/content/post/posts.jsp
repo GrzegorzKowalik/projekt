@@ -20,16 +20,16 @@
 <%--    <h2><s:property value="%{getAllPosts()}"/> </h2>--%>
 <%--</div>&ndash;%&gt;--%>
 <div style="padding-left:16px">
-    <%--<s:include value="../user/styles/styleMain.jsp" />--%>
+    <s:include value="../user/styles/styleMain2.jsp" />
     <div >
         <s:iterator value="%{'CATEGORY'.equals(#listType) && Integer.parseInt(categoryId) > 0 ? getAllPostsFromCategory(#categoryId) : 'USER'.equals(#listType) && Integer.parseInt(userId) > 0 ? getAllPostsOfUser(#userId) : getAllPosts()}" var="post" status="stat">
             <div class="main">
                 <tr>
                     <td>
-                        <h2><a href="<%=request.getContextPath()%>/post/show-details?post.id=<s:property value="id"/>" style="text-decoration: none"><s:property value="title"/></a></h2>
+                        <h2><a href="<%=request.getContextPath()%>/post/show-details?post.id=<s:property value="id"/>" class="tit"><s:property value="title"/></a></h2>
                         <p><s:property value="body"/></p>
                         <s:iterator value="#post.files" var="file">
-                        <img class="center" src="<%=request.getContextPath()%><s:property value="#file.path"/> " alt="<s:property value="id"/>" style="max-width: 100%">
+                        <img class="postImage" src="<%=request.getContextPath()%><s:property value="#file.path"/> " alt="<s:property value="id"/>" style="max-width: 100%">
                         </s:iterator>
                     </td>
                 </tr>
