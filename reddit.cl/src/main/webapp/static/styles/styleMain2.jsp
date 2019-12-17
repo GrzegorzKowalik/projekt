@@ -17,6 +17,11 @@
             background-color: #171A1C;
         }
 
+        .topnav {
+            overflow: hidden;
+            background-color: #1abc9c;
+        }
+
         .topnav a {
             float: left;
             display: block;
@@ -199,20 +204,12 @@
         /* Main column */
         .main {
             -ms-flex: 50%; /* IE10 */
-            width: 40%;
+            width: 50%;
             background-color: #333333;
             padding: 20px;
             margin-left: auto;
             margin-right: auto;
 
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        .tit {
-            color: #CC0000;
-            text-decoration: none;
         }
 
         /* Fake image, just for this example */
@@ -236,7 +233,7 @@
         .backgroundDiv {
             margin-left: 0;
             margin-right: 0;
-            background-color: #171A1C;
+            background-color: hotpink;
         }
     </style>
 </head>

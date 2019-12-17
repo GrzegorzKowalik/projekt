@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reddit-postgres-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reddit-postgres
+  template:
+    metadata:
+      labels:
+        app: reddit-postgres
+    spec:
+      containers:
+        - name: reddit-postgres
+          image: postgres:12.0
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: reddit.cl
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: reddit123
+          volumeMounts:
+            - mountPath: "/var/lib/postgresql/data"
+              name: "reddit-volume"
+      volumes:
+        - name: reddit-volume
+          persistentVolumeClaim:
+            claimName: reddit-postgres-claim
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: reddit-postgres-svc
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+  selector:
+    app: reddit-postgres
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: reddit-postgres-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/reddit_postgres"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: reddit-postgres-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi

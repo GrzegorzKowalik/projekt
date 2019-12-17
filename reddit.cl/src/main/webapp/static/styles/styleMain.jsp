@@ -14,7 +14,12 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #171A1C;
+            background-color: hotpink;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #e9e9e9;
         }
 
         .topnav a {
@@ -54,7 +59,7 @@
             padding: 6px 10px;
             margin-top: 8px;
             margin-right: 16px;
-            background-color: #555;
+            background-color: grey;
             color: white;
             font-size: 17px;
             border: none;
@@ -62,7 +67,7 @@
         }
 
         .topnav .right-navbar button:hover {
-            background-color: green;
+            background-color: deeppink;
         }
 
         @media screen and (max-width: 600px) {
@@ -102,7 +107,7 @@
 
         /* Set a style for all buttons */
         button {
-            background-color: #555555;
+            background-color: deeppink;
             color: white;
             padding: 14px 20px;
             margin: 8px 0;
@@ -119,7 +124,7 @@
         /* Extra styles for the cancel button */
         .cancelbtn {
             padding: 14px 20px;
-            background-color: #2196F3;
+            background-color: #f44336;
         }
 
         /* Float cancel and signup buttons and add an equal width */
@@ -198,21 +203,22 @@
 
         /* Main column */
         .main {
-            -ms-flex: 50%; /* IE10 */
-            width: 40%;
-            background-color: #333333;
+            -ms-flex: 60%; /* IE10 */
+            width: 60%;
+            background-color: pink;
             padding: 20px;
             margin-left: auto;
             margin-right: auto;
 
         }
-        table, th, td {
-            border: 1px solid black;
-        }
 
-        .tit {
-            color: #CC0000;
-            text-decoration: none;
+        .postPlace {
+            width: 120%;
+            background-color: hotpink;
+            overflow: visible;
+            margin-left: -50px;
+            margin-right: -90px;
+
         }
 
         /* Fake image, just for this example */
@@ -228,16 +234,14 @@
             margin-left: 5%;
             margin-right: 5%;
         }
-
         .postDiv {
             padding: 5px;
         }
 
         .backgroundDiv {
-            margin-left: 0;
-            margin-right: 0;
-            background-color: #171A1C;
+            background-color: hotpink;
         }
+
     </style>
 </head>
 <body>

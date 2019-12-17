@@ -11,21 +11,22 @@ import org.apache.struts2.convention.annotation.*;
 
 import java.util.List;
 
-@ParentPackage("json-default")
+//@ParentPackage("json-default")
 @Namespace("/post")
 @Results({
         @Result(name = "success", location = "postDetails.jsp"),
         @Result(name = "error", location = "createPost.jsp"),
         @Result(name = "add", location = "createPost.jsp"),
         @Result(name = "commentError", location = "postDetails.jsp"),
-        @Result(name = "input", location = "postDetails.jsp"),
-        @Result(name = "json", type = "json", params = {"root", "resultJSON"})
+        @Result(name = "input", location = "postDetails.jsp")
+//        @Result(name = "json", type = "json", params = {"root", "resultJSON"})
 })
 public class PostAction extends AbstractAction {
 
     private Post post;
     private Comment comment;
     private User user;
+    private Long postId;
     private List<Post> paginatedPosts;
     private List <java.io.File> files;
     private List <File> fileModels;
@@ -70,13 +71,15 @@ public class PostAction extends AbstractAction {
     @Action("add-comment")
     public String addComment() {
         boolean errors = false;
-        if (getComment() != null && getUser() != null && getPost() != null) {
+        if (getComment() != null && getUserFromSession() != null) {
             if(StringUtils.isBlank(getComment().getBody())){
                 addFieldError("comment.body", "Write something!");
                 errors = true;
             }
-            getComment().setPost(getPost());
-            getComment().setUser(getUser());
+            Post post = new Post();
+            post.setId(getPostId());
+            getComment().setPost(post);
+            getComment().setUser(getUserFromSession());
             if (!errors) {
                 setComment(commentService.createComment(getComment()));
                 if (getComment() != null) {
@@ -126,5 +129,13 @@ public class PostAction extends AbstractAction {
 
     public void setComment(Comment comment) {
         this.comment = comment;
+    }
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 }
