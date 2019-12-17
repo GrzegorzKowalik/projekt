@@ -23,9 +23,10 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Link 1</a>
             <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+        <s:iterator value="category.name" var="cat">
+            <a href="#"><s:property value="#category.name"/> </a>
+        </s:iterator>
         </div>
     </div>
 <%--    <input type="text" placeholder="Search" name="search">--%>

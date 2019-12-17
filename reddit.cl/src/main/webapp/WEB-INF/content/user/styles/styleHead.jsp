@@ -20,7 +20,7 @@
             background-color: #333;
             overflow: hidden;
             width: 100%;
-            position: fixed;
+           /* position: fixed;*/
             top: 0;
         }
 
