@@ -14,11 +14,19 @@ public class PostService {
     }
 
     public Post findById(Post post) {
-        return getPostRepository().findById(post.getId());
+        return findById(post.getId());
+    }
+
+    public Post findById(Long idPost) {
+        return getPostRepository().findById(idPost);
     }
 
     public List<Post> findAll() {
         return postRepository.findAll();
+    }
+
+    public List<Post> findByIdUser(Long idUser) {
+        return postRepository.findByIdUser(idUser);
     }
 
     private PostRepository getPostRepository() {

@@ -16,7 +16,7 @@ import java.util.Set;
 public class Comment extends AbstractEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -24,7 +24,7 @@ public class Comment extends AbstractEntity {
     @JoinColumn(name = "id_parent", referencedColumnName = "id")
     private Comment parent;
 
-    @OrderBy("tsCreated desc")
+    @OrderBy("tsCreated asc")
     @OneToMany(mappedBy = "parent")
     private Set<Comment> subComments = new LinkedHashSet<Comment>();
 

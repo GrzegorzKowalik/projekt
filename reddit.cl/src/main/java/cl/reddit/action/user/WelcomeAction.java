@@ -5,7 +5,7 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
-@Namespace("/")
+@Namespace("")
 @Results({
 //        @Result(name = "json", type = "json", params = {"root", "resultJSON"})
         @Result(name = "success", location = "index.jsp"),

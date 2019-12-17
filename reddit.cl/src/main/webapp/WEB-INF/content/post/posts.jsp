@@ -11,8 +11,8 @@
 <body>
 <s:set var="hasRole">${param.hasRole}</s:set>
 <s:set var="listType">${param.listType}</s:set>
-<s:set var="categoryId">${param.categoryId}</s:set>
-<s:set var="userId">${param.userId}</s:set>
+<s:set var="idCategory">${param.idCategory}</s:set>
+<s:set var="idUser">${param.idUser}</s:set>
 <%--<div>--%>
 <%--    <h2><s:property value="userId"/> </h2>--%>
 <%--</div>--%>
@@ -22,7 +22,7 @@
 <div style="padding-left:16px">
     <s:include value="../user/styles/styleMain2.jsp" />
     <div >
-        <s:iterator value="%{'CATEGORY'.equals(#listType) && Integer.parseInt(categoryId) > 0 ? getAllPostsFromCategory(#categoryId) : 'USER'.equals(#listType) && Integer.parseInt(userId) > 0 ? getAllPostsOfUser(#userId) : getAllPosts()}" var="post" status="stat">
+        <s:iterator value="%{'CATEGORY'.equals(#listType) && #idCategory > 0 ? getAllPostsFromCategory(#idCategory) : 'USER'.equals(#listType) && #idUser > 0 ? getAllPostsOfUser(#idUser) : getAllPosts()}" var="post" status="stat">
             <div class="main">
                 <tr>
                     <td>

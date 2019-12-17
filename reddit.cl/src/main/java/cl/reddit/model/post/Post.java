@@ -54,7 +54,7 @@ public class Post extends AbstractEntity {
     @OneToMany(mappedBy = "post")
     private Set<Vote> votes;
 
-    @OrderBy("tsCreated desc")
+    @OrderBy("tsCreated asc")
     @OneToMany(mappedBy = "post")
     private Set<Comment> comments = new LinkedHashSet<Comment>();
 

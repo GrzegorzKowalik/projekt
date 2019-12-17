@@ -29,6 +29,7 @@ public class Category extends AbstractEntity {
     @Column(name = "ts_created")
     private Timestamp tsCreated;
 
+    @OrderBy("tsCreated desc")
     @OneToMany(mappedBy = "category")
     private Set<Post> posts;
 

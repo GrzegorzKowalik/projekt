@@ -1,6 +1,7 @@
 package cl.reddit.action.post;
 
 import cl.reddit.action.AbstractAction;
+import cl.reddit.model.category.Category;
 import cl.reddit.model.comment.Comment;
 import cl.reddit.model.file.File;
 import cl.reddit.model.post.Post;
@@ -25,6 +26,7 @@ public class PostAction extends AbstractAction {
 
     private Post post;
     private Comment comment;
+    private Category category;
     private User user;
     private Long postId;
     private List<Post> paginatedPosts;
@@ -83,7 +85,7 @@ public class PostAction extends AbstractAction {
             if (!errors) {
                 setComment(commentService.createComment(getComment()));
                 if (getComment() != null) {
-                    setPost(getComment().getPost());
+                    setPost(postService.findById(post));
                     return SUCCESS;
                 }
             }

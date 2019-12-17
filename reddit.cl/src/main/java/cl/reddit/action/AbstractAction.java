@@ -1,7 +1,9 @@
 package cl.reddit.action;
 
+import cl.reddit.model.category.Category;
 import cl.reddit.model.post.Post;
 import cl.reddit.model.user.User;
+import cl.reddit.service.category.CategoryService;
 import cl.reddit.service.post.CommentService;
 import cl.reddit.service.post.PostService;
 import cl.reddit.service.user.UserService;
@@ -9,6 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +22,7 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
     private UserService userService = new UserService();
     protected PostService postService = new PostService();
     protected CommentService commentService = new CommentService();
+    protected CategoryService categoryService = new CategoryService();
 
     private SessionMap session ;
     protected final String JSON = "json";
@@ -80,5 +84,22 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
         List<Post> list = postService.findAll();
         Collections.reverse(list);
         return list;
+    }
+
+    public List<Post> getAllPostsFromCategory(Long idCategory) {
+        List<Post> result = new ArrayList<>();
+        Category resultCat = categoryService.findById(idCategory);
+        if (resultCat != null) {
+            result = new ArrayList<>(resultCat.getPosts());
+        }
+        return result;
+    }
+
+    public List<Post> getAllPostsOfUser(Long idUser) {
+        return postService.findByIdUser(idUser);
+    }
+
+    public List<Category> getAllCategories() {
+        return categoryService.findAll();
     }
 }

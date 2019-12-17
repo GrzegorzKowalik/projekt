@@ -24,7 +24,7 @@
         <p><s:property value="body"/></p>
         <s:iterator value="post.files" var="file">
             <img class="postImage" src="<%=request.getContextPath()%><s:property value="#file.path"/> " alt="<s:property value="id"/>" style="max-width: 100%">
-        <br>
+            <br>
         </s:iterator>
         <br>
         <h3>Comments</h3>
@@ -45,15 +45,24 @@
             </s:iterator>
         </s:iterator>
         <br>
-        <label><b>Add comment</b></label>
-        <form action='<%=request.getContextPath()%>/post/add-comment.cl' method="post">
-<%--            <s:hidden name="post" value="post"/>--%>
-<%--            <s:hidden name="postId" value="%{post.id}"/>--%>
-            <s:fielderror fieldName="comment.body"/>
-            <input type="text" placeholder="Write comment..." name="comment.body" required>
-            <button type="submit">Add comment</button>
-        </form>
+        <s:if test="%{hasRole(\"ROLE_USER\")}">
+            <label><b>Add comment</b></label>
+            <form action='<%=request.getContextPath()%>/post/add-comment.cl' method="post">
+                <s:hidden name="postId" value="%{post.id}"/>
+                <s:fielderror fieldName="comment.body"/>
+                <input type="text" placeholder="Write comment..." name="comment.body" required>
+                <button type="submit">Add comment</button>
+            </form>
+        </s:if>
     </div>
 </div>
 </body>
 </html>
+
+<script>
+    function postComment() {
+        /*var newComments = [];
+        newComments.push({body: "${comment.body}", nick: "${comment.user.nick}"});*/
+        console.log("chuj");
+    }
+</script>

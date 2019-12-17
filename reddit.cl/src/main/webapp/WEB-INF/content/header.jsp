@@ -24,8 +24,8 @@
         </button>
         <div class="dropdown-content">
             <a href="#">Link 2</a>
-        <s:iterator value="category.name" var="cat">
-            <a href="#"><s:property value="#category.name"/> </a>
+        <s:iterator value="%{getAllCategories()}" var="cat">
+            <a href="<%=request.getContextPath()%>/category/category?idCategory=<s:property value="#cat.id"/>"><s:property value="#cat.name"/></a>
         </s:iterator>
         </div>
     </div>
