@@ -211,6 +211,9 @@
             margin-right: auto;
 
         }
+        table, th, td {
+            border: 1px solid black;
+        }
 
         /* Fake image, just for this example */
         .fakeimg {
@@ -233,7 +236,7 @@
         .backgroundDiv {
             margin-left: 0;
             margin-right: 0;
-            background-color: hotpink;
+            background-color: #171A1C;
         }
     </style>
 </head>

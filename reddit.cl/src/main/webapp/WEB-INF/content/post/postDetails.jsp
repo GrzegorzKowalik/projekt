@@ -12,7 +12,7 @@
     <title><s:property value="post.title"/></title>
 </head>
 <body>
-<s:include value="../user/styles/styleMain.jsp" />
+<s:include value="../user/styles/styleMain2.jsp" />
 <s:include value="../header.jsp">
     <s:param name="hasRole"><s:property value="%{hasRole(\"ROLE_USER\")}"/></s:param>
 </s:include>
@@ -24,7 +24,7 @@
         <p><s:property value="body"/></p>
         <s:iterator value="post.files" var="file">
             <img class="center" src="<%=request.getContextPath()%><s:property value="#file.path"/> " alt="<s:property value="id"/>" style="max-width: 100%">
-        <br>
+            <br>
         </s:iterator>
         <br>
         <h3>Comments</h3>
@@ -47,7 +47,7 @@
         <br>
         <label><b>Add comment</b></label>
         <form action='<s:action name="post/add-comment.cl"/>' method="post">
-<%--            <s:hidden name="post" value="post"/>--%>
+            <%--            <s:hidden name="post" value="post"/>--%>
             <p><s:property value="post"/></p>
             <s:hidden name="user" value="post.user"/>
             <p><s:property value="post.user"/></p>
