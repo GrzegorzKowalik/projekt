@@ -1,7 +1,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://reddit-postgres-svc:5432/reddit.cl</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/reddit.cl</property>
         <property name="hibernate.default_schema">main</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">reddit123</property>
