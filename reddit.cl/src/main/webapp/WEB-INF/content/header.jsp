@@ -18,8 +18,17 @@
 <div class="topnav">
     <a id="namespace"><b>reddit.cl</b> </a>
     <a class="active" href="<%=request.getContextPath()%>"><b>Home</b></a>
-   <%-- <a href="#category3">category3</a>
-    <input type="text" placeholder="Search" name="search">--%>
+    <div class="dropdown">
+        <button class="dropbtn">Category
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+    </div>
+<%--    <input type="text" placeholder="Search" name="search">--%>
 
     <div class="right-navbar">
         <s:if test="#hasRole">
@@ -34,3 +43,22 @@
 </div>
 </body>
 </html>
+<script>
+    function myDropdown() {
+        document.getElementById("dropdown-content").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>

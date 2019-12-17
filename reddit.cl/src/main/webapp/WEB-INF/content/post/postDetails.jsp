@@ -51,16 +51,9 @@
 <%--            <s:hidden name="postId" value="%{post.id}"/>--%>
             <s:fielderror fieldName="comment.body"/>
             <input type="text" placeholder="Write comment..." name="comment.body" required>
-            <button onclick="postComment()">Add comment</button>
+            <button type="submit">Add comment</button>
         </form>
     </div>
 </div>
 </body>
 </html>
-<script>
-    function postComment() {
-        /*var newComments = [];
-        newComments.push({body: "${comment.body}", nick: "${comment.user.nick}"});*/
-        console.log("chuj");
-    }
-</script>
