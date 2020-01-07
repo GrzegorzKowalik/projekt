@@ -7,6 +7,8 @@ import cl.reddit.model.file.File;
 import cl.reddit.model.user.User;
 import cl.reddit.model.vote.Vote;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,7 +22,7 @@ import java.util.Set;
 public class Post extends AbstractEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -45,17 +47,18 @@ public class Post extends AbstractEntity {
     private Timestamp tsCreated;
 
     @NotNull
+    @UpdateTimestamp
     @Column(name = "ts_modified")
     private Timestamp tsModified;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
     private Set<File> files;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
     private Set<Vote> votes;
 
     @OrderBy("tsCreated asc")
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
     private Set<Comment> comments = new LinkedHashSet<Comment>();
 
     @Override

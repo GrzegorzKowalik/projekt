@@ -12,19 +12,27 @@
     <title>Upload</title>
 </head>
 <body>
-<jsp:include page="user/styles/styleHead.jsp" />
+<jsp:include page="../user/styles/styleMain2.jsp" />
 <%--<span onclick="document.getElementById('register').style.display='none'" class="close" title="Close Modal">&times;</span>--%>
-<form class="modal-content" action="/action_page.php" method="post">
+<form class="modal-content" action="<%=request.getContextPath()%>/post/add-post.cl" method="post" enctype="multipart/form-data">
     <div class="container">
         <h1>Upload</h1>
         <br>
-        <label><b>Name</b></label>
-        <input type="text" name="nametag" size="20" />
+        <label><b>Title</b></label>
+        <input type="text" name="postDTO.title" size="10" placeholder="Enter title..." required/>
         <label><b>Category</b></label>
-        <input type="text" name="nametag" size="50" />
-
-        Select file : <input type='file' name='file' id='file' class='form-control' ><br>
-
+        <select name="postDTO.idCategory" required>
+            <s:iterator value="%{getAllCategories()}" var="cat">
+                <option value="<s:property value="#cat.id"/>"><s:property value="#cat.name"/></option>
+            </s:iterator>
+        </select>
+        <br>
+        <br>
+        <label><b>Body</b></label>
+        <br>
+        <textarea name="postDTO.body" rows="10" cols="30" placeholder="Enter description..."></textarea>
+        <br>
+        Select file : <input type='file' multiple="multiple" name='files' id='files' class='form-control' ><br>
         <div class="clearfix">
             <%--<button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>--%>
             <button type="submit" class="loginbtn">Upload</button>

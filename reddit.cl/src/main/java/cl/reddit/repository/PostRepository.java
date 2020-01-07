@@ -40,6 +40,7 @@ public class PostRepository extends AbstractRepository<Post> {
         CriteriaQuery<Post> criteriaQuery = criteriaBuilder.createQuery(Post.class);
         Root<Post> root = criteriaQuery.from(Post.class);
         List<Post> posts = session.createQuery(criteriaQuery.select(root).where(criteriaBuilder.equal(root.get("id_user"), idUser))).getResultList();
+        session.close();
         return posts;
     }
 }

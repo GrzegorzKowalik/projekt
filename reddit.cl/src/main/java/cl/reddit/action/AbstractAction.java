@@ -1,10 +1,12 @@
 package cl.reddit.action;
 
 import cl.reddit.model.category.Category;
+import cl.reddit.model.comment.Comment;
 import cl.reddit.model.post.Post;
 import cl.reddit.model.user.User;
 import cl.reddit.service.category.CategoryService;
 import cl.reddit.service.post.CommentService;
+import cl.reddit.service.post.FileService;
 import cl.reddit.service.post.PostService;
 import cl.reddit.service.user.UserService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -23,6 +25,7 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
     protected PostService postService = new PostService();
     protected CommentService commentService = new CommentService();
     protected CategoryService categoryService = new CategoryService();
+    protected FileService fileService = new FileService();
 
     private SessionMap session ;
     protected final String JSON = "json";
@@ -99,7 +102,19 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
         return postService.findByIdUser(idUser);
     }
 
+    public List<Comment> getSubcomments(Long idComment) {
+        return new ArrayList<>(commentService.findById(idComment).getSubComments());
+    }
+
     public List<Category> getAllCategories() {
         return categoryService.findAll();
+    }
+
+    public FileService getFileService() {
+        return fileService;
+    }
+
+    public void setFileService(FileService fileService) {
+        this.fileService = fileService;
     }
 }

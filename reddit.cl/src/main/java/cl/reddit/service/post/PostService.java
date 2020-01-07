@@ -1,6 +1,9 @@
 package cl.reddit.service.post;
 
+import cl.reddit.model.category.Category;
 import cl.reddit.model.post.Post;
+import cl.reddit.model.post.dto.PostDTO;
+import cl.reddit.model.user.User;
 import cl.reddit.repository.PostRepository;
 
 import java.util.List;
@@ -10,6 +13,19 @@ public class PostService {
     private PostRepository postRepository = new PostRepository();
 
     public Post createPost(Post post) {
+        return getPostRepository().create(post);
+    }
+
+    public Post createPost(PostDTO postDTO) {
+        Post post = new Post();
+        post.setBody(postDTO.getBody());
+        post.setTitle(postDTO.getTitle());
+        User user = new User();
+        user.setId(postDTO.getIdUser());
+        post.setUser(user);
+        Category category = new Category();
+        category.setId(postDTO.getIdCategory());
+        post.setCategory(category);
         return getPostRepository().create(post);
     }
 

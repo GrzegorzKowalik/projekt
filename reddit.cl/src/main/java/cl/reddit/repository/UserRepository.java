@@ -42,11 +42,14 @@ public class UserRepository extends AbstractRepository<User> {
     }
 
     public boolean emailOrNickExists(String nick, String email) {
+        boolean result = false;
         Session session = HibernateUtil.getSession();
         Query query = session.createQuery("SELECT 1 FROM User WHERE email = :email OR nick = :nick");
         query.setParameter("email", email);
         query.setParameter("nick", nick);
-        return query.getResultList().size() > 0;
+        result = query.getResultList().size() > 0;
+        session.close();
+        return result;
     }
 
     public User findByEmail(String email) {
@@ -59,6 +62,7 @@ public class UserRepository extends AbstractRepository<User> {
         if (users.size() == 1){
             result = users.get(0);
         }
+        session.close();
         return result;
     }
 }

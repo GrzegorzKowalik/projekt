@@ -14,4 +14,8 @@ public class CommentService {
     private CommentRepository getCommentRepository() {
         return commentRepository;
     }
+
+    public Comment findById(Long idComment) {
+        return commentRepository.findById(idComment);
+    }
 }

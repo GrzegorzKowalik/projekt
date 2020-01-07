@@ -23,7 +23,6 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Link 2</a>
         <s:iterator value="%{getAllCategories()}" var="cat">
             <a href="<%=request.getContextPath()%>/category/category?idCategory=<s:property value="#cat.id"/>"><s:property value="#cat.name"/></a>
         </s:iterator>
@@ -34,7 +33,7 @@
     <div class="right-navbar">
         <s:if test="#hasRole">
             <button onclick="location.href ='<%=request.getContextPath()%>/log-out.cl'" style="width:auto;">Logout</button>
-            <button onclick="location.href ='<%=request.getContextPath()%>/upload.cl'" style="width:auto;">Upload</button>
+            <button onclick="location.href ='<%=request.getContextPath()%>/post/upload.cl'" style="width:auto;">Upload</button>
         </s:if>
         <s:else>
             <button onclick="location.href ='<%=request.getContextPath()%>/login.cl'" style="width:auto;">Login</button>

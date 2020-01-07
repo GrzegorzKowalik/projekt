@@ -20,12 +20,12 @@ public class Comment extends AbstractEntity {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(cascade = { CascadeType.ALL})
+    @ManyToOne(cascade = { CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_parent", referencedColumnName = "id")
     private Comment parent;
 
     @OrderBy("tsCreated asc")
-    @OneToMany(mappedBy = "parent")
+    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER)
     private Set<Comment> subComments = new LinkedHashSet<Comment>();
 
     @ManyToOne

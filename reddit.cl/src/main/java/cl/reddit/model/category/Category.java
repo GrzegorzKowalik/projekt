@@ -30,7 +30,7 @@ public class Category extends AbstractEntity {
     private Timestamp tsCreated;
 
     @OrderBy("tsCreated desc")
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private Set<Post> posts;
 
     @Override

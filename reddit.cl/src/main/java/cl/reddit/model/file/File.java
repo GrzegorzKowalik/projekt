@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 public class File extends AbstractEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 

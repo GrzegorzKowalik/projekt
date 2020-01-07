@@ -56,7 +56,7 @@ public class User extends AbstractEntity {
     @Column(name = "ts_status_changed")
     private Timestamp tsStatusChanged;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<File> files;
 
     @Override

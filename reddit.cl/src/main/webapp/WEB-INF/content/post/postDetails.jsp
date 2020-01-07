@@ -29,20 +29,12 @@
         <br>
         <h3>Comments</h3>
         <s:iterator value="post.comments" var="comment">
-            <a href="<%=request.getContextPath()%>/user/get-user?user.id=<s:property value="#comment.user.id"/>">
-                <i><b><s:property value="#comment.user.nick"/></b></i></a> <br>
-            <a style="height: 10px"><s:property value="#comment.body"/> </a>
-            <s:iterator value="#comment.files" var="comFile">
-                <img style="height: 10px" class="center" src="<%=request.getContextPath()%><s:property value="#comFile.path"/> " alt="<s:property value="id"/>" style="max-width: 100%">
-            </s:iterator> <br>
-            <s:iterator value="#comment.subComments" var="sub">
-                <tr><td><a style="margin: 10px; height: 10px" href="<%=request.getContextPath()%>/user/get-user?user.id=<s:property value="#sub.user.id" />"><s:property value="#sub.user.nick"/></a></td></tr>
-                <br>
-                <tr><td><a style="margin: 10px"><s:property value="#sub.body"/> </a></td></tr> <br>
-                <s:iterator value="#sub.files" var="subFile">
-                    <tr><td><img class="center" src="<%=request.getContextPath()%><s:property value="#subFile.path"/> " alt="<s:property value="#subFile.id"/>" style="max-width: 100%"></td></tr>
-                </s:iterator>
-            </s:iterator>
+            <s:include value="comment.jsp">
+                <s:param name="idComment"><s:property value="#comment.id"/></s:param>
+                <s:param name="body"><s:property value="#comment.body"/></s:param>
+                <s:param name="userNick"><s:property value="#comment.user.nick"/></s:param>
+                <s:param name="idUser"><s:property value="#comment.user.id"/></s:param>
+            </s:include>
         </s:iterator>
         <br>
         <s:if test="%{hasRole(\"ROLE_USER\")}">

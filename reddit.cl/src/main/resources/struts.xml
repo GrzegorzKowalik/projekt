@@ -9,6 +9,7 @@
     <constant name="struts.serve.static" value="false" />
     <constant name="struts.convention.result.path" value="/WEB-INF/content/" />
     <constant name="struts.action.excludePattern" value="/static/*.?"/>
+    <constant name="struts.multipart.maxSize" value="1000000000" />
     <package name="default" namespace="/" extends="struts-default">
 
     </package>
