@@ -13,7 +13,7 @@
 <s:set var="nick">${param.userNick}</s:set>
 <s:set var="idUser">${param.idUser}</s:set>
 <html>
-<a href="<%=request.getContextPath()%>/user/get-user?user.id=<s:property value="#idUser"/>">
+<a href="<%=request.getContextPath()%>/user/user-content?user.id=<s:property value="#idUser"/>">
     <i><b><s:property value="#nick"/></b></i></a> <br>
 <a style="height: 10px"><s:property value="#body"/> </a>
 <br>

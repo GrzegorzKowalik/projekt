@@ -45,6 +45,10 @@ public class PostService {
         return postRepository.findByIdUser(idUser);
     }
 
+    public List<Post> findByIdCategory(Long idCategory) {
+        return postRepository.findByIdCategory(idCategory);
+    }
+
     private PostRepository getPostRepository() {
         return postRepository;
     }

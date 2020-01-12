@@ -37,15 +37,18 @@
             </s:include>
         </s:iterator>
         <br>
-        <s:if test="%{hasRole(\"ROLE_USER\")}">
-            <label><b>Add comment</b></label>
+        <s:if test="%{hasRole('ROLE_USER')}">
             <form action='<%=request.getContextPath()%>/post/add-comment.cl' method="post">
                 <s:hidden name="postId" value="%{post.id}"/>
                 <s:fielderror fieldName="comment.body"/>
+                <label><b>Add comment</b></label>
                 <input type="text" placeholder="Write comment..." name="comment.body" required>
                 <button type="submit">Add comment</button>
             </form>
         </s:if>
+        <s:else>
+            <div><s:property value="%{hasRole('ROLE_USER')}"/></div>
+        </s:else>
     </div>
 </div>
 </body>

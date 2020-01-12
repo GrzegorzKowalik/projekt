@@ -56,8 +56,8 @@ public class PostAction extends AbstractAction {
                 for (int i = 0; i < files.size(); i++) {
                     String[] filename = getFilesFileName().get(i).split("\\.");
                     long stamp = System.currentTimeMillis();
-                    java.io.File temp = new java.io.File("C:\\Users\\uranm\\IdeaProjects\\projekt\\reddit.cl\\target\\reddit.cl\\static\\" + filename[0] + "_" + stamp + "." + filename[1]);
-                    java.io.File temp2 = new java.io.File("C:\\Users\\uranm\\IdeaProjects\\projekt\\reddit.cl\\src\\main\\webapp\\static\\" + filename[0] + "_" + stamp + "." + filename[1]);
+                    java.io.File temp = new java.io.File(System.getProperty("user.dir") + "\\static\\" + filename[0] + "_" + stamp + "." + filename[1]);
+                    java.io.File temp2 = new java.io.File(System.getProperty("user.dir") + "\\static\\" + filename[0] + "_" + stamp + "." + filename[1]);
                     try(FileInputStream fis = new FileInputStream(files.get(i));
                         FileOutputStream fos = new FileOutputStream(temp);
                         FileOutputStream fos2 = new FileOutputStream(temp2);
@@ -125,7 +125,7 @@ public class PostAction extends AbstractAction {
                 setComment(commentService.createComment(getComment()));
                 if (getComment() != null) {
                     setPost(postService.findById(post));
-                    return SUCCESS;
+                        return SUCCESS;
                 }
             }
         }

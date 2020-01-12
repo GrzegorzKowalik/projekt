@@ -4,7 +4,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.devMode" value="false"/>
     <constant name="struts.action.extension" value="cl,," />
     <constant name="struts.serve.static" value="false" />
     <constant name="struts.convention.result.path" value="/WEB-INF/content/" />

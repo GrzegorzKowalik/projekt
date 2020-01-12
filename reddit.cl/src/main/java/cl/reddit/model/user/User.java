@@ -26,7 +26,7 @@ public class User extends AbstractEntity {
     private UserStatus userStatus;
 
     @NotNull
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<UserRole> userRoles;
 
     @NotNull

@@ -90,12 +90,7 @@ public abstract class AbstractAction extends ActionSupport implements SessionAwa
     }
 
     public List<Post> getAllPostsFromCategory(Long idCategory) {
-        List<Post> result = new ArrayList<>();
-        Category resultCat = categoryService.findById(idCategory);
-        if (resultCat != null) {
-            result = new ArrayList<>(resultCat.getPosts());
-        }
-        return result;
+        return postService.findByIdCategory(idCategory);
     }
 
     public List<Post> getAllPostsOfUser(Long idUser) {
